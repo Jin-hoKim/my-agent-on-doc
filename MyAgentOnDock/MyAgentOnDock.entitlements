@@ -10,6 +10,14 @@
     <key>com.apple.security.network.client</key>
     <true/>
 
+    <!-- 사용자 선택 파일/폴더 읽기 권한 (NSOpenPanel — Team 모드 프로젝트 폴더 선택) -->
+    <key>com.apple.security.files.user-selected.read-only</key>
+    <true/>
+
+    <!-- Security-Scoped Bookmark 저장 권한 (Team 모드 폴더 접근 영구 유지) -->
+    <key>com.apple.security.files.bookmarks.app-scope</key>
+    <true/>
+
     <!-- Application Support 파일 접근 (대화 기록 저장) -->
     <!-- Sandbox 환경에서는 기본적으로 App Container에만 접근 가능 -->
 
