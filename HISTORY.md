@@ -1,5 +1,30 @@
 # 변경 이력
 
+## 2026-04-03 - Team 모드 코드 분리 (Solo 전용으로 정리)
+
+### 삭제 파일 (Team 모드 전용 → my-agents-on-dock 프로젝트로 이동)
+- `MyAgentOnDock/Models/AgentRole.swift`
+- `MyAgentOnDock/Models/TeamAgent.swift`
+- `MyAgentOnDock/Models/TeamConfiguration.swift`
+- `MyAgentOnDock/Services/AgentsConfigService.swift`
+- `MyAgentOnDock/Services/BookmarkService.swift`
+- `MyAgentOnDock/Services/ProcessMonitorService.swift`
+- `MyAgentOnDock/Services/TeamPanelManager.swift`
+- `MyAgentOnDock/Views/AgentCharacterView.swift`
+- `MyAgentOnDock/Views/SetupView.swift`
+- `MyAgentOnDock/Views/TeamDockView.swift`
+
+### 수정 파일
+- `MyAgentOnDock/AppDelegate.swift` — Team 모드 패널/서비스/옵저버 제거, Solo 전용으로 복원
+- `MyAgentOnDock/Views/MenuBarView.swift` — Team 상태 섹션/팀 설정 메뉴 제거, Solo 전용으로 복원
+- `README.md` — Team 모드 문서 제거
+
+### 변경 사유
+- Solo 모드(my-agent-on-dock)와 Team 모드(my-agents-on-dock)를 별도 프로젝트로 분리
+- Team 모드는 https://github.com/Jin-hoKim/my-agents-on-doc 에서 독립 개발
+
+---
+
 ## 2026-04-03 - 메뉴바 팝오버 안열림 버그 수정
 
 ### 수정 파일
