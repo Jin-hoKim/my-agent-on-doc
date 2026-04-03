@@ -18,6 +18,15 @@ class ClaudeAPIService: ObservableObject {
     // 현재 대화 ID
     var currentConversationId: UUID?
 
+    // Snoozing 타이머 (5분 이상 idle 시 snoozing 상태)
+    private var snoozingTask: Task<Void, Never>?
+    private let snoozingDelay: TimeInterval = 300  // 5분
+
+    // 초기화 시 snoozing 타이머 시작
+    init() {
+        resetSnoozingTimer()
+    }
+
     // 시스템 프롬프트
     private let systemPrompt = """
     당신은 사용자의 개인 AI 에이전트입니다. 친절하고 유용한 답변을 제공하세요.
@@ -33,6 +42,13 @@ class ClaudeAPIService: ObservableObject {
             return
         }
 
+        // Snoozing 타이머 리셋 (활동 감지)
+        resetSnoozingTimer()
+
+        // 새 메시지 수신 표정 (잠깐)
+        state = .newMessage
+        try? await Task.sleep(nanoseconds: 600_000_000)
+
         // 사용자 메시지 추가
         let userChat = ChatMessage(role: .user, content: userMessage)
         messages.append(userChat)
@@ -40,6 +56,8 @@ class ClaudeAPIService: ObservableObject {
         streamingText = ""
 
         do {
+            // 스트리밍 시작 전 잠깐 loading 상태
+            try? await Task.sleep(nanoseconds: 300_000_000)
             state = .streaming
             let finalText = try await streamAPI(
                 apiKey: settings.apiKey,
@@ -51,19 +69,105 @@ class ClaudeAPIService: ObservableObject {
             streamingText = ""
             let assistantChat = ChatMessage(role: .assistant, content: finalText)
             messages.append(assistantChat)
-            state = .idle
+
+            // 응답 길이에 따른 감정 표현
+            let responseEmotionState = determineCompletionEmotion(for: finalText)
+            state = responseEmotionState
 
             // TTS 재생
             if settings.voiceType != .none {
+                state = .voiceMode
                 TTSService.shared.speak(finalText, voiceType: settings.voiceType)
+                // TTS 완료 대기 (평균 읽기 속도 기준 예상)
+                let estimatedDuration = Double(finalText.count) * 0.06
+                let clampedDuration = min(max(estimatedDuration, 1.0), 30.0)
+                try? await Task.sleep(nanoseconds: UInt64(clampedDuration * 1_000_000_000))
             }
+
+            // 감정 상태 자동 복귀
+            if let delay = responseEmotionState.autoRevertDelay {
+                if settings.voiceType == .none {
+                    try? await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
+                }
+            }
+            state = .idle
 
             // 대화 기록 저장
             saveCurrentConversation()
 
+        } catch let apiError as APIError {
+            streamingText = ""
+            // 에러 종류별 감정 표현
+            switch apiError {
+            case .invalidAPIKey:
+                state = .sad
+                try? await Task.sleep(nanoseconds: 2_000_000_000)
+                state = .error("유효하지 않은 API 키")
+            case .httpError(let code, let msg):
+                if code == 429 {
+                    state = .angry
+                    try? await Task.sleep(nanoseconds: 2_000_000_000)
+                    state = .lowBattery
+                    try? await Task.sleep(nanoseconds: 1_500_000_000)
+                    state = .error("요청 한도 초과 (429)")
+                } else if code >= 500 {
+                    state = .outOfService
+                    try? await Task.sleep(nanoseconds: 2_000_000_000)
+                    state = .error("서버 오류 (\(code))")
+                } else {
+                    state = .surprised
+                    try? await Task.sleep(nanoseconds: 1_500_000_000)
+                    state = .error("HTTP \(code): \(msg)")
+                }
+            case .parseError:
+                state = .crazy
+                try? await Task.sleep(nanoseconds: 1_500_000_000)
+                state = .error("응답 파싱 실패")
+            default:
+                state = .surprised
+                try? await Task.sleep(nanoseconds: 1_500_000_000)
+                state = .error(apiError.localizedDescription)
+            }
         } catch {
             streamingText = ""
+            state = .sad
+            try? await Task.sleep(nanoseconds: 1_500_000_000)
             state = .error(error.localizedDescription)
+        }
+    }
+
+    // 응답 완료 시 감정 결정
+    private func determineCompletionEmotion(for text: String) -> AgentState {
+        let length = text.count
+        // 웃음/유머 키워드 감지
+        let laughKeywords = ["😂", "🤣", "하하", "ㅋㅋ", "농담", "재미있"]
+        let heartKeywords = ["❤️", "💕", "사랑", "감사", "훌륭", "완벽", "최고"]
+
+        if laughKeywords.contains(where: { text.contains($0) }) {
+            return .laughing
+        } else if heartKeywords.contains(where: { text.contains($0) }) {
+            return .heartEyes
+        } else if length > 800 {
+            return .excited  // 긴 응답 → 흥분
+        } else if length > 300 {
+            return .pleased  // 보통 응답 → 만족
+        } else {
+            return .winking  // 짧은 응답 → 윙크
+        }
+    }
+
+    // Snoozing 타이머 리셋
+    private func resetSnoozingTimer() {
+        snoozingTask?.cancel()
+        snoozingTask = Task { [weak self] in
+            guard let self else { return }
+            try? await Task.sleep(nanoseconds: UInt64(self.snoozingDelay * 1_000_000_000))
+            guard !Task.isCancelled else { return }
+            await MainActor.run {
+                if case .idle = self.state {
+                    self.state = .snoozing
+                }
+            }
         }
     }
 
@@ -73,6 +177,7 @@ class ClaudeAPIService: ObservableObject {
         streamingText = ""
         state = .idle
         currentConversationId = nil
+        resetSnoozingTimer()
     }
 
     // 대화 불러오기

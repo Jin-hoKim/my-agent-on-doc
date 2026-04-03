@@ -1,5 +1,34 @@
 # 변경 이력
 
+## 2026-04-03 - 캐릭터 표정 다양화 (20가지 감정 상태)
+
+### 수정 파일
+- `MyAgentOnDock/Models/AgentState.swift` — 기존 5가지 상태에서 20가지 감정 상태로 확장
+  - 추가: voiceMode, excited, angry, winking, surprised, loading, pleased, sad, laughing, snoozing, neutral, outOfService, lowBattery, crazy, heartEyes, newMessage, unknown
+  - `autoRevertDelay` 프로퍼티 추가: 감정 표현 후 자동 idle 복귀 시간
+- `MyAgentOnDock/Models/CharacterType.swift` — 20가지 상태 × 6 캐릭터 이모지 매핑
+  - 기존 단순 프로퍼티 → `emoji(for state: AgentState) -> String` 메서드로 일원화
+  - 캐릭터별 특성 반영: 고양이는 😺😸😾🙀😻😹😿 등 고양이 이모지 활용
+  - 로봇은 ⚙️🖥️🔊💤🔴 등 기계적 이모지 활용
+  - 우주인은 🔭🛰️📡🚀🌌 등 우주 이모지 활용
+- `MyAgentOnDock/Views/DockCharacterView.swift` — 감정 상태별 비주얼 완전 리디자인
+  - 배경 그래디언트: 긍정(초록/노랑), 부정(빨강/파랑), 중립(회색) 등 감정별 색상
+  - 그림자 색상/크기 감정별 차별화
+  - 이모지 크기 스케일 감정별 차별화 (excited: 1.2x, outOfService: 0.85x)
+  - emotionBadge: voiceMode 음파 인디케이터, newMessage 빨간 점, snoozing 💤, lowBattery ⚠️
+  - 상태 텍스트 색상 감정별 차별화 (긍정: green, 부정: red, 특별: purple 등)
+- `MyAgentOnDock/Services/ClaudeAPIService.swift` — 상황별 자동 감정 전환 로직
+  - 메시지 전송 시: newMessage → thinking → streaming
+  - 응답 완료 시: 응답 길이/키워드 분석 → laughing/heartEyes/excited/pleased/winking 자동 결정
+  - 에러 종류별: 401→sad, 429→angry→lowBattery, 500→outOfService, 파싱→crazy, 기타→surprised
+  - 5분 idle 시 snoozing 자동 전환 (snoozingTask 타이머)
+  - TTS 재생 중 voiceMode 상태 유지
+
+### 빌드 결과
+경고 0, 에러 0, Build complete
+
+---
+
 ## 2026-04-03 - Team 모드 구현 완성 + 메뉴바 팝오버 버그 수정 (최종)
 
 ### 수정 파일 (이번 세션)
