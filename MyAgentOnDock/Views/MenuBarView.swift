@@ -4,6 +4,7 @@ import SwiftUI
 struct MenuBarView: View {
     @ObservedObject private var settings = AppSettings.shared
     @ObservedObject private var apiService = ClaudeAPIService.shared
+    @ObservedObject private var historyService = ChatHistoryService.shared
 
     var body: some View {
         VStack(spacing: 0) {
@@ -86,6 +87,45 @@ struct MenuBarView: View {
                 .padding(.horizontal, 14)
                 .padding(.vertical, 6)
 
+                // 최근 대화 섹션
+                if !historyService.recentConversations.isEmpty {
+                    Divider().padding(.vertical, 4)
+
+                    HStack {
+                        Image(systemName: "clock")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .frame(width: 20)
+                        Text("최근 대화")
+                            .font(.caption.weight(.semibold))
+                            .foregroundColor(.secondary)
+                        Spacer()
+                    }
+                    .padding(.horizontal, 14)
+                    .padding(.top, 4)
+
+                    ForEach(historyService.recentConversations) { conversation in
+                        Button(action: {
+                            apiService.loadConversation(conversation)
+                            NotificationCenter.default.post(name: .togglePromptWindow, object: nil)
+                        }) {
+                            HStack {
+                                Image(systemName: "bubble.left")
+                                    .font(.caption)
+                                    .frame(width: 20)
+                                Text(conversation.title)
+                                    .font(.caption)
+                                    .lineLimit(1)
+                                Spacer()
+                            }
+                            .padding(.horizontal, 14)
+                            .padding(.vertical, 4)
+                            .contentShape(Rectangle())
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+
                 Divider().padding(.vertical, 4)
 
                 // 설정
@@ -102,7 +142,7 @@ struct MenuBarView: View {
             }
             .padding(.vertical, 4)
         }
-        .frame(width: 260)
+        .frame(width: 280)
     }
 }
 

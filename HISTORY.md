@@ -1,5 +1,33 @@
 # 변경 이력
 
+## 2026-04-03 - Phase 5 기능 구현 완료 (SSE 스트리밍, 대화 저장, TTS)
+
+### 신규 파일
+- `MyAgentOnDock/Models/Conversation.swift` — 대화 세션 모델 (Codable, Identifiable)
+- `MyAgentOnDock/Services/ChatHistoryService.swift` — Application Support JSON 저장/로드, CRUD
+- `MyAgentOnDock/Services/TTSService.swift` — AVSpeechSynthesizer TTS 서비스
+
+### 수정 파일
+- `MyAgentOnDock/Models/AgentState.swift` — `.streaming` case 추가
+- `MyAgentOnDock/Models/ChatMessage.swift` — Codable 추가
+- `MyAgentOnDock/Models/ClaudeModel.swift` — 최신 모델 ID 반영 (claude-sonnet-4-6, claude-opus-4-6)
+- `MyAgentOnDock/Models/VoiceType.swift` — AVSpeechSynthesizer 피치/속도 매핑
+- `MyAgentOnDock/Services/AppSettings.swift` — ttsEnabled, useAnimation 설정 추가
+- `MyAgentOnDock/Services/ClaudeAPIService.swift` — SSE 스트리밍(`bytes(for:)`), 대화 저장 연동, TTS 연동
+- `MyAgentOnDock/Views/DockCharacterView.swift` — `.streaming` case 처리, 배경 그래디언트 수정
+- `MyAgentOnDock/Views/PromptWindowView.swift` — StreamingBubbleView (커서 애니메이션), ConversationListView, 대화 기록 UI
+- `MyAgentOnDock/Views/SettingsView.swift` — TTS 활성화 토글, 음성 선택, 테스트 버튼
+- `MyAgentOnDock/Views/MenuBarView.swift` — 최근 대화 메뉴 섹션 추가
+- `MyAgentOnDock/AppDelegate.swift` — 기존 구조 유지
+
+### 변경 사유
+- Phase 5-1: SSE 스트리밍으로 토큰 단위 실시간 응답 표시 (UX 개선)
+- Phase 5-2: 대화 기록 JSON 저장 → 앱 재시작 시 복원, 최근 대화 5개 메뉴바 표시
+- Phase 5-4: AVSpeechSynthesizer TTS — 남성/여성/로봇 음성 3종 지원
+- 빌드 에러 수정: DockCharacterView `.streaming` case 누락 → switch 문 보완
+
+---
+
 ## 2026-04-03 - 프로젝트 초기 생성
 
 ### 신규 파일

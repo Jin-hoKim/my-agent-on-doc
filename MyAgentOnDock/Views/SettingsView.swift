@@ -49,7 +49,7 @@ struct SettingsView: View {
                 .padding(.vertical, 16)
             }
         }
-        .frame(width: 400, height: 580)
+        .frame(width: 400, height: 640)
         .background(.ultraThickMaterial)
         .onAppear {
             tempAPIKey = settings.apiKey
@@ -181,20 +181,38 @@ struct SettingsView: View {
     // 음성 선택 섹션
     private var voiceSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Label("음성", systemImage: "speaker.wave.2.fill")
+            Label("음성 (TTS)", systemImage: "speaker.wave.2.fill")
                 .font(.subheadline.weight(.semibold))
 
-            Picker("", selection: Binding(
-                get: { settings.voiceType },
-                set: { settings.voiceType = $0 }
-            )) {
-                ForEach(VoiceType.allCases) { voice in
-                    Text(voice.displayName).tag(voice)
-                }
-            }
-            .pickerStyle(.radioGroup)
+            // TTS 활성화 토글
+            Toggle("응답 읽어주기 활성화", isOn: $settings.ttsEnabled)
+                .toggleStyle(.switch)
+                .controlSize(.small)
 
-            Text("향후 TTS 기능이 추가될 예정입니다")
+            if settings.ttsEnabled {
+                Picker("", selection: Binding(
+                    get: { settings.voiceType },
+                    set: { settings.voiceType = $0 }
+                )) {
+                    ForEach(VoiceType.allCases.filter { $0 != .none }) { voice in
+                        Text(voice.displayName).tag(voice)
+                    }
+                }
+                .pickerStyle(.radioGroup)
+                .disabled(!settings.ttsEnabled)
+
+                // 테스트 재생 버튼
+                Button(action: {
+                    TTSService.shared.speak("안녕하세요! 저는 여러분의 AI 에이전트입니다.", voiceType: settings.voiceType)
+                }) {
+                    Label("음성 테스트", systemImage: "play.circle")
+                        .font(.caption)
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.small)
+            }
+
+            Text(settings.ttsEnabled ? "에이전트 응답을 음성으로 읽어드립니다" : "응답을 읽어주기 기능이 비활성화되어 있습니다")
                 .font(.caption)
                 .foregroundColor(.secondary)
         }

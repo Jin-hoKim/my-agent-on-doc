@@ -4,8 +4,10 @@ import SwiftUI
 struct PromptWindowView: View {
     @ObservedObject private var apiService = ClaudeAPIService.shared
     @ObservedObject private var settings = AppSettings.shared
+    @ObservedObject private var historyService = ChatHistoryService.shared
     @State private var inputText = ""
     @FocusState private var isInputFocused: Bool
+    @State private var showConversationList = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -27,13 +29,19 @@ struct PromptWindowView: View {
                 inputAreaView
             }
         }
-        .frame(width: 480, height: 560)
+        .frame(width: 480, height: 580)
         .background(.ultraThickMaterial)
+        .sheet(isPresented: $showConversationList) {
+            ConversationListView(onSelect: { conversation in
+                apiService.loadConversation(conversation)
+                showConversationList = false
+            })
+        }
     }
 
     // 헤더
     private var headerView: some View {
-        HStack {
+        HStack(spacing: 8) {
             Text(settings.characterType.workingEmoji)
                 .font(.title2)
             VStack(alignment: .leading, spacing: 2) {
@@ -44,6 +52,33 @@ struct PromptWindowView: View {
                     .foregroundColor(.secondary)
             }
             Spacer()
+
+            // TTS 중지 버튼
+            if settings.ttsEnabled && settings.voiceType != .none {
+                Button(action: { TTSService.shared.stop() }) {
+                    Image(systemName: "speaker.slash")
+                        .foregroundColor(.orange)
+                }
+                .buttonStyle(.plain)
+                .help("음성 중지")
+            }
+
+            // 대화 기록
+            Button(action: { showConversationList = true }) {
+                Image(systemName: "clock.arrow.circlepath")
+                    .foregroundColor(.secondary)
+            }
+            .buttonStyle(.plain)
+            .help("대화 기록")
+
+            // 새 대화
+            Button(action: { apiService.startNewConversation() }) {
+                Image(systemName: "square.and.pencil")
+                    .foregroundColor(.secondary)
+            }
+            .buttonStyle(.plain)
+            .help("새 대화")
+
             // 대화 초기화
             Button(action: { apiService.clearMessages() }) {
                 Image(systemName: "trash")
@@ -72,6 +107,7 @@ struct PromptWindowView: View {
             Spacer()
         }
         .padding()
+        .frame(maxHeight: .infinity)
     }
 
     // 대화 영역
@@ -79,17 +115,29 @@ struct PromptWindowView: View {
         ScrollViewReader { proxy in
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 12) {
-                    if apiService.messages.isEmpty {
+                    if apiService.messages.isEmpty && apiService.streamingText.isEmpty {
                         emptyStateView
                     }
 
                     ForEach(apiService.messages) { message in
-                        MessageBubbleView(message: message, characterEmoji: settings.characterType.workingEmoji)
-                            .id(message.id)
+                        MessageBubbleView(
+                            message: message,
+                            characterEmoji: settings.characterType.workingEmoji
+                        )
+                        .id(message.id)
                     }
 
-                    // 로딩 인디케이터
-                    if apiService.state.isWorking {
+                    // 스트리밍 중 임시 버블
+                    if !apiService.streamingText.isEmpty {
+                        StreamingBubbleView(
+                            text: apiService.streamingText,
+                            characterEmoji: settings.characterType.workingEmoji
+                        )
+                        .id("streaming")
+                    }
+
+                    // 생각 중 인디케이터
+                    if apiService.state == .thinking {
                         HStack(spacing: 8) {
                             Text(settings.characterType.thinkingEmoji)
                                 .font(.title3)
@@ -101,11 +149,21 @@ struct PromptWindowView: View {
                 }
                 .padding(.vertical, 12)
             }
+            .onChange(of: apiService.streamingText) { _, _ in
+                withAnimation(.easeOut(duration: 0.1)) {
+                    proxy.scrollTo("streaming", anchor: .bottom)
+                }
+            }
             .onChange(of: apiService.messages.count) { _, _ in
                 withAnimation {
                     if let lastId = apiService.messages.last?.id {
                         proxy.scrollTo(lastId, anchor: .bottom)
-                    } else {
+                    }
+                }
+            }
+            .onChange(of: apiService.state) { _, newState in
+                if newState == .thinking {
+                    withAnimation {
                         proxy.scrollTo("loading", anchor: .bottom)
                     }
                 }
@@ -129,7 +187,7 @@ struct PromptWindowView: View {
     // 입력 영역
     private var inputAreaView: some View {
         HStack(spacing: 8) {
-            TextField("메시지를 입력하세요...", text: $inputText, axis: .vertical)
+            TextField("메시지를 입력하세요... (Enter 전송, Shift+Enter 줄바꿈)", text: $inputText, axis: .vertical)
                 .textFieldStyle(.plain)
                 .lineLimit(1...5)
                 .focused($isInputFocused)
@@ -164,6 +222,47 @@ struct PromptWindowView: View {
         inputText = ""
         Task {
             await apiService.sendMessage(text)
+        }
+    }
+}
+
+// 스트리밍 중 실시간 버블
+struct StreamingBubbleView: View {
+    let text: String
+    let characterEmoji: String
+    @State private var cursorVisible = true
+    @State private var cursorTimer: Timer?
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 8) {
+            Text(characterEmoji)
+                .font(.title3)
+                .frame(width: 28)
+
+            VStack(alignment: .leading, spacing: 4) {
+                (Text(text) + Text(cursorVisible ? "▋" : " ").foregroundColor(.accentColor))
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.secondary.opacity(0.1))
+                    )
+                    .textSelection(.enabled)
+            }
+            .frame(maxWidth: 360, alignment: .leading)
+
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 16)
+        .onAppear {
+            cursorTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+                cursorVisible.toggle()
+            }
+        }
+        .onDisappear {
+            cursorTimer?.invalidate()
+            cursorTimer = nil
         }
     }
 }
@@ -220,6 +319,7 @@ struct MessageBubbleView: View {
 // 타이핑 인디케이터
 struct TypingIndicatorView: View {
     @State private var dotCount = 0
+    @State private var timer: Timer?
 
     var body: some View {
         HStack(spacing: 4) {
@@ -231,9 +331,101 @@ struct TypingIndicatorView: View {
             }
         }
         .onAppear {
-            Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true) { _ in
+            timer = Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true) { _ in
                 dotCount = (dotCount + 1) % 3
             }
         }
+        .onDisappear {
+            timer?.invalidate()
+            timer = nil
+        }
+    }
+}
+
+// 대화 목록 시트
+struct ConversationListView: View {
+    @ObservedObject private var historyService = ChatHistoryService.shared
+    var onSelect: (Conversation) -> Void
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        VStack(spacing: 0) {
+            HStack {
+                Text("대화 기록")
+                    .font(.headline)
+                Spacer()
+                Button("닫기") { dismiss() }
+                    .buttonStyle(.plain)
+                    .foregroundColor(.secondary)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+
+            Divider()
+
+            if historyService.conversations.isEmpty {
+                VStack(spacing: 12) {
+                    Spacer()
+                    Image(systemName: "clock")
+                        .font(.system(size: 36))
+                        .foregroundColor(.secondary)
+                    Text("저장된 대화가 없습니다")
+                        .foregroundColor(.secondary)
+                    Spacer()
+                }
+            } else {
+                List {
+                    ForEach(historyService.conversations) { conversation in
+                        Button(action: { onSelect(conversation) }) {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(conversation.title)
+                                    .font(.subheadline.weight(.medium))
+                                    .lineLimit(1)
+                                HStack {
+                                    Text("\(conversation.messages.count)개 메시지")
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                    Spacer()
+                                    Text(relativeTime(conversation.updatedAt))
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                }
+                            }
+                            .contentShape(Rectangle())
+                        }
+                        .buttonStyle(.plain)
+                    }
+                    .onDelete { indexSet in
+                        for idx in indexSet {
+                            historyService.deleteConversation(id: historyService.conversations[idx].id)
+                        }
+                    }
+                }
+                .listStyle(.plain)
+
+                Divider()
+
+                Button(role: .destructive) {
+                    historyService.deleteAll()
+                } label: {
+                    HStack {
+                        Image(systemName: "trash")
+                        Text("전체 삭제")
+                    }
+                    .foregroundColor(.red)
+                    .font(.subheadline)
+                }
+                .buttonStyle(.plain)
+                .padding(.vertical, 10)
+            }
+        }
+        .frame(width: 360, height: 440)
+        .background(.ultraThickMaterial)
+    }
+
+    private func relativeTime(_ date: Date) -> String {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .short
+        return formatter.localizedString(for: date, relativeTo: Date())
     }
 }

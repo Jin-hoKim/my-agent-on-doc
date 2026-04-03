@@ -22,6 +22,12 @@ class AppSettings: ObservableObject {
     // 패널 표시 여부
     @AppStorage("characterPanelVisible") var isPanelVisible: Bool = true
 
+    // TTS 활성화
+    @AppStorage("ttsEnabled") var ttsEnabled: Bool = false
+
+    // Lottie 애니메이션 사용 여부 (향후 Lottie 파일 준비 후 활성화)
+    @AppStorage("useAnimation") var useAnimation: Bool = false
+
     var characterType: CharacterType {
         get { CharacterType(rawValue: characterTypeRaw) ?? .developer }
         set { characterTypeRaw = newValue.rawValue }

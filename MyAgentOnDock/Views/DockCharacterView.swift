@@ -65,7 +65,7 @@ struct DockCharacterView: View {
     // 상태별 배경 그래디언트
     private func backgroundGradient(for state: AgentState, color: Color) -> some ShapeStyle {
         switch state {
-        case .thinking, .responding:
+        case .thinking, .streaming, .responding:
             return LinearGradient(
                 colors: [color.opacity(0.3), color.opacity(0.6)],
                 startPoint: .topLeading,
@@ -84,6 +84,7 @@ struct DockCharacterView: View {
     private func emojiForState(character: CharacterType, state: AgentState) -> String {
         switch state {
         case .thinking: return character.thinkingEmoji
+        case .streaming: return character.workingEmoji
         case .responding: return character.workingEmoji
         case .error: return "❌"
         case .idle: return character.idleEmoji

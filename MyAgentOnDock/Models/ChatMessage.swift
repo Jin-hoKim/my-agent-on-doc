@@ -1,13 +1,13 @@
 import Foundation
 
 // 채팅 메시지 모델
-struct ChatMessage: Identifiable, Equatable {
+struct ChatMessage: Identifiable, Equatable, Codable {
     let id: UUID
     let role: Role
-    let content: String
+    var content: String
     let timestamp: Date
 
-    enum Role: String {
+    enum Role: String, Codable {
         case user
         case assistant
     }

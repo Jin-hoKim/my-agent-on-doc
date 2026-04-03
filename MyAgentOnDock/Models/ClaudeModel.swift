@@ -3,8 +3,8 @@ import Foundation
 // 선택 가능한 Claude 모델
 enum ClaudeModel: String, CaseIterable, Codable, Identifiable {
     case haiku = "claude-haiku-4-5-20251001"
-    case sonnet = "claude-sonnet-4-6-20250514"
-    case opus = "claude-opus-4-6-20250514"
+    case sonnet = "claude-sonnet-4-6"
+    case opus = "claude-opus-4-6"
 
     var id: String { rawValue }
 
