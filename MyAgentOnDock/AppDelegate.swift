@@ -1,7 +1,7 @@
 import AppKit
 import SwiftUI
 
-// 앱 생명주기 관리
+// 앱 생명주기 관리 (@MainActor — 모든 UI 작업 메인 스레드)
 @MainActor
 class AppDelegate: NSObject, NSApplicationDelegate {
     // Solo 모드 패널
@@ -15,10 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var setupWindow: NSWindow?
 
     // 알림 옵저버
-    private var promptObserver: NSObjectProtocol?
-    private var settingsObserver: NSObjectProtocol?
-    private var setupObserver: NSObjectProtocol?
-    private var teamModeObserver: NSObjectProtocol?
+    private var observers: [NSObjectProtocol] = []
 
     // 메뉴바 (NSStatusItem + NSPopover)
     private var statusItem: NSStatusItem?
@@ -39,18 +36,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Dock 아이콘 숨기기
         NSApp.setActivationPolicy(.accessory)
 
-        // 메뉴바 아이콘 + 팝오버 설정
-        setupStatusItem()
-
-        // 서비스 초기화 체인
+        // 서비스 체인 연결
         agentsConfigService.bookmarkService = bookmarkService
         processMonitorService.agentsConfigService = agentsConfigService
 
-        // 앱 시작: bookmark 복원 시도
-        Task { @MainActor in
+        // 메뉴바 아이콘 + 팝오버 설정
+        setupStatusItem()
+
+        // 앱 시작: bookmark 복원 → 팀 또는 Solo 패널
+        Task {
             let restored = bookmarkService.restoreBookmark()
             if restored {
-                // agents.json 자동 로드
                 await agentsConfigService.loadAgents()
                 if agentsConfigService.connectionStatus == .connected {
                     showTeamPanel()
@@ -58,43 +54,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     showSoloPanel()
                 }
             } else {
-                // bookmark 없음 → Solo 모드로 시작
                 showSoloPanel()
             }
         }
 
         // 이벤트 옵저버 등록
-        promptObserver = NotificationCenter.default.addObserver(
-            forName: .togglePromptWindow,
-            object: nil,
-            queue: .main
-        ) { [weak self] _ in
-            Task { @MainActor in self?.togglePromptWindow() }
-        }
-
-        settingsObserver = NotificationCenter.default.addObserver(
-            forName: .openSettings,
-            object: nil,
-            queue: .main
-        ) { [weak self] _ in
-            Task { @MainActor in self?.openSettingsWindow() }
-        }
-
-        setupObserver = NotificationCenter.default.addObserver(
-            forName: .openSetup,
-            object: nil,
-            queue: .main
-        ) { [weak self] _ in
-            Task { @MainActor in self?.openSetupWindow() }
-        }
-
-        teamModeObserver = NotificationCenter.default.addObserver(
-            forName: .teamModeActivated,
-            object: nil,
-            queue: .main
-        ) { [weak self] _ in
-            Task { @MainActor in self?.switchToTeamMode() }
-        }
+        registerObservers()
     }
 
     func applicationWillTerminate(_ notification: Notification) {
@@ -105,8 +70,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         setupWindow?.close()
         bookmarkService.stopAccessing()
         processMonitorService.stopMonitoring()
-        [promptObserver, settingsObserver, setupObserver, teamModeObserver].compactMap { $0 }.forEach {
-            NotificationCenter.default.removeObserver($0)
+        observers.forEach { NotificationCenter.default.removeObserver($0) }
+    }
+
+    // MARK: - 알림 등록
+
+    private func registerObservers() {
+        let pairs: [(Notification.Name, @MainActor () -> Void)] = [
+            (.togglePromptWindow, { [weak self] in self?.togglePromptWindow() }),
+            (.openSettings,        { [weak self] in self?.openSettingsWindow() }),
+            (.openSetup,           { [weak self] in self?.openSetupWindow() }),
+            (.teamModeActivated,   { [weak self] in self?.switchToTeamMode() })
+        ]
+
+        observers = pairs.map { (name, handler) in
+            NotificationCenter.default.addObserver(forName: name, object: nil, queue: .main) { _ in
+                Task { @MainActor in handler() }
+            }
         }
     }
 
@@ -122,7 +102,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         let pop = NSPopover()
-        pop.contentSize = NSSize(width: 280, height: 360)
+        pop.contentSize = NSSize(width: 280, height: 380)
         pop.behavior = .transient
         pop.animates = true
         pop.contentViewController = NSHostingController(
@@ -132,7 +112,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover = pop
     }
 
-    @objc private func togglePopover() {
+    @objc func togglePopover() {
         guard let button = statusItem?.button, let pop = popover else { return }
 
         if pop.isShown {
@@ -179,16 +159,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
 
-        let window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 480, height: 560),
-            styleMask: [.titled, .closable, .resizable, .miniaturizable],
-            backing: .buffered,
-            defer: false
+        let window = makeWindow(
+            size: NSRect(x: 0, y: 0, width: 480, height: 560),
+            title: "My Agent",
+            style: [.titled, .closable, .resizable, .miniaturizable]
         )
-        window.title = "My Agent"
         window.contentView = NSHostingView(rootView: PromptWindowView())
-        window.center()
-        window.isReleasedWhenClosed = false
         window.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
         promptWindow = window
@@ -201,16 +177,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
 
-        let window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 400, height: 640),
-            styleMask: [.titled, .closable],
-            backing: .buffered,
-            defer: false
+        let window = makeWindow(
+            size: NSRect(x: 0, y: 0, width: 400, height: 640),
+            title: "설정",
+            style: [.titled, .closable]
         )
-        window.title = "설정"
         window.contentView = NSHostingView(rootView: SettingsView())
-        window.center()
-        window.isReleasedWhenClosed = false
         window.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
         settingsWindow = window
@@ -223,23 +195,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
 
-        let window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 520, height: 600),
-            styleMask: [.titled, .closable],
-            backing: .buffered,
-            defer: false
+        let window = makeWindow(
+            size: NSRect(x: 0, y: 0, width: 520, height: 600),
+            title: "팀 프로젝트 연결",
+            style: [.titled, .closable]
         )
-        window.title = "팀 프로젝트 연결"
         window.contentView = NSHostingView(
             rootView: SetupView()
                 .environmentObject(agentsConfigService)
                 .environmentObject(bookmarkService)
         )
-        window.center()
-        window.isReleasedWhenClosed = false
         window.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
         setupWindow = window
+    }
+
+    private func makeWindow(size: NSRect, title: String, style: NSWindow.StyleMask) -> NSWindow {
+        let window = NSWindow(
+            contentRect: size,
+            styleMask: style,
+            backing: .buffered,
+            defer: false
+        )
+        window.title = title
+        window.center()
+        window.isReleasedWhenClosed = false
+        return window
     }
 }
 

@@ -1,5 +1,18 @@
 # 변경 이력
 
+## 2026-04-03 - Team 모드 구현 완성 + 메뉴바 팝오버 버그 수정 (최종)
+
+### 수정 파일 (이번 세션)
+- `MyAgentOnDock/AppDelegate.swift` — @MainActor 클래스, NSStatusItem+NSPopover 메뉴바, Team/Solo 패널 전환, 창 관리 일원화
+- `MyAgentOnDock/Views/MenuBarView.swift` — Team/Solo 모드 통합 뷰, 팀 에이전트 상태 목록, 팀 설정 버튼 추가
+
+### 버그 수정 (최종)
+- MenuBarExtra(.window) + .accessory 정책 충돌로 메뉴창 미표시 문제 완전 해결
+  → NSStatusItem + NSPopover(.transient) 직접 구현 (AppDelegate에서 직접 관리)
+- AppDelegate 서비스 초기화를 applicationDidFinishLaunching으로 이동하여 @MainActor 충돌 방지
+
+---
+
 ## 2026-04-03 - Team 모드 구현 + 메뉴바 팝오버 버그 수정
 
 ### 신규 파일 (Team 모드)

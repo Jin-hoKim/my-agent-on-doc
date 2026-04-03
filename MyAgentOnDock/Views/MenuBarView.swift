@@ -1,37 +1,105 @@
 import SwiftUI
 
-// 메뉴바 드롭다운 뷰
+// 메뉴바 드롭다운 뷰 (Solo + Team 모드 통합)
 struct MenuBarView: View {
+    @EnvironmentObject private var configService: AgentsConfigService
     @ObservedObject private var settings = AppSettings.shared
     @ObservedObject private var apiService = ClaudeAPIService.shared
     @ObservedObject private var historyService = ChatHistoryService.shared
 
+    var isTeamMode: Bool {
+        configService.connectionStatus == .connected && !configService.agents.isEmpty
+    }
+
     var body: some View {
         VStack(spacing: 0) {
             // 헤더
-            HStack {
-                Text(settings.characterType.workingEmoji)
-                    .font(.title3)
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("My Agent on Dock")
-                        .font(.headline)
-                    HStack(spacing: 4) {
-                        Circle()
-                            .fill(settings.isAPIKeySet ? .green : .red)
-                            .frame(width: 6, height: 6)
-                        Text(settings.isAPIKeySet ? "API 연결됨" : "API 키 미설정")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                    }
-                }
-                Spacer()
-            }
-            .padding(.horizontal, 14)
-            .padding(.vertical, 10)
+            headerSection
 
             Divider()
 
-            // 에이전트 상태
+            // Team 모드 에이전트 상태 또는 Solo 모드 상태
+            if isTeamMode {
+                teamStatusSection
+            } else {
+                soloStatusSection
+            }
+
+            Divider()
+
+            // 메뉴 항목
+            menuActions
+
+            .padding(.vertical, 4)
+        }
+        .frame(width: 280)
+    }
+
+    // MARK: - 헤더
+
+    private var headerSection: some View {
+        HStack {
+            Text(isTeamMode ? "🤝" : settings.characterType.workingEmoji)
+                .font(.title3)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(isTeamMode ? "Team 모드" : "My Agent on Dock")
+                    .font(.headline)
+                HStack(spacing: 4) {
+                    Circle()
+                        .fill(headerStatusColor)
+                        .frame(width: 6, height: 6)
+                    Text(headerStatusText)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+            }
+            Spacer()
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 10)
+    }
+
+    private var headerStatusColor: Color {
+        if isTeamMode { return .green }
+        return settings.isAPIKeySet ? .green : .red
+    }
+
+    private var headerStatusText: String {
+        if isTeamMode {
+            let active = configService.agents.filter { $0.isActive }.count
+            return "\(active)/\(configService.agents.count)명 활성"
+        }
+        return settings.isAPIKeySet ? "API 연결됨" : "API 키 미설정"
+    }
+
+    // MARK: - Team 상태 섹션
+
+    private var teamStatusSection: some View {
+        VStack(spacing: 0) {
+            ForEach(configService.agents) { agent in
+                HStack(spacing: 8) {
+                    Circle()
+                        .fill(agent.isActive ? Color.green : Color.gray.opacity(0.4))
+                        .frame(width: 7, height: 7)
+                    Text(agent.emoji)
+                        .font(.system(size: 13))
+                    Text(agent.name.isEmpty ? agent.id : agent.name)
+                        .font(.subheadline)
+                    Spacer()
+                    Text(agent.id)
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
+                }
+                .padding(.horizontal, 14)
+                .padding(.vertical, 5)
+            }
+        }
+    }
+
+    // MARK: - Solo 상태 섹션
+
+    private var soloStatusSection: some View {
+        VStack(spacing: 0) {
             HStack {
                 Circle()
                     .fill(apiService.state.isWorking ? .green : .gray.opacity(0.4))
@@ -46,7 +114,6 @@ struct MenuBarView: View {
             .padding(.horizontal, 14)
             .padding(.vertical, 8)
 
-            // 모델 정보
             HStack {
                 Image(systemName: "cpu")
                     .font(.caption)
@@ -58,12 +125,15 @@ struct MenuBarView: View {
             }
             .padding(.horizontal, 14)
             .padding(.bottom, 8)
+        }
+    }
 
-            Divider()
+    // MARK: - 메뉴 버튼들
 
-            // 메뉴 항목들
-            VStack(spacing: 0) {
-                // 프롬프트 창 열기
+    private var menuActions: some View {
+        VStack(spacing: 0) {
+            // Solo 모드: 대화 창 열기
+            if !isTeamMode {
                 MenuButton(
                     icon: "message.fill",
                     title: "대화 창 열기",
@@ -71,8 +141,18 @@ struct MenuBarView: View {
                 ) {
                     NotificationCenter.default.post(name: .togglePromptWindow, object: nil)
                 }
+            }
 
-                // Dock 캐릭터 표시 토글
+            // Team 모드: 팀 프로젝트 연결 설정
+            MenuButton(
+                icon: isTeamMode ? "person.3.fill" : "link.badge.plus",
+                title: isTeamMode ? "팀 설정" : "팀 프로젝트 연결"
+            ) {
+                NotificationCenter.default.post(name: .openSetup, object: nil)
+            }
+
+            // Solo 모드: Dock 캐릭터 표시 토글
+            if !isTeamMode {
                 Toggle(isOn: $settings.isPanelVisible) {
                     HStack {
                         Image(systemName: "dock.rectangle")
@@ -86,63 +166,50 @@ struct MenuBarView: View {
                 .controlSize(.small)
                 .padding(.horizontal, 14)
                 .padding(.vertical, 6)
+            }
 
-                // 최근 대화 섹션
-                if !historyService.recentConversations.isEmpty {
-                    Divider().padding(.vertical, 4)
+            // 최근 대화 (Solo 모드)
+            if !isTeamMode && !historyService.recentConversations.isEmpty {
+                Divider().padding(.vertical, 4)
 
-                    HStack {
-                        Image(systemName: "clock")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                            .frame(width: 20)
-                        Text("최근 대화")
-                            .font(.caption.weight(.semibold))
-                            .foregroundColor(.secondary)
-                        Spacer()
-                    }
-                    .padding(.horizontal, 14)
-                    .padding(.top, 4)
+                HStack {
+                    Image(systemName: "clock").font(.caption).foregroundColor(.secondary).frame(width: 20)
+                    Text("최근 대화").font(.caption.weight(.semibold)).foregroundColor(.secondary)
+                    Spacer()
+                }
+                .padding(.horizontal, 14)
+                .padding(.top, 4)
 
-                    ForEach(historyService.recentConversations) { conversation in
-                        Button(action: {
-                            apiService.loadConversation(conversation)
-                            NotificationCenter.default.post(name: .togglePromptWindow, object: nil)
-                        }) {
-                            HStack {
-                                Image(systemName: "bubble.left")
-                                    .font(.caption)
-                                    .frame(width: 20)
-                                Text(conversation.title)
-                                    .font(.caption)
-                                    .lineLimit(1)
-                                Spacer()
-                            }
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 4)
-                            .contentShape(Rectangle())
+                ForEach(historyService.recentConversations) { conversation in
+                    Button(action: {
+                        apiService.loadConversation(conversation)
+                        NotificationCenter.default.post(name: .togglePromptWindow, object: nil)
+                    }) {
+                        HStack {
+                            Image(systemName: "bubble.left").font(.caption).frame(width: 20)
+                            Text(conversation.title).font(.caption).lineLimit(1)
+                            Spacer()
                         }
-                        .buttonStyle(.plain)
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 4)
+                        .contentShape(Rectangle())
                     }
-                }
-
-                Divider().padding(.vertical, 4)
-
-                // 설정
-                MenuButton(icon: "gearshape.fill", title: "설정") {
-                    NotificationCenter.default.post(name: .openSettings, object: nil)
-                }
-
-                Divider().padding(.vertical, 4)
-
-                // 종료
-                MenuButton(icon: "power", title: "종료") {
-                    NSApplication.shared.terminate(nil)
+                    .buttonStyle(.plain)
                 }
             }
-            .padding(.vertical, 4)
+
+            Divider().padding(.vertical, 4)
+
+            MenuButton(icon: "gearshape.fill", title: "설정") {
+                NotificationCenter.default.post(name: .openSettings, object: nil)
+            }
+
+            Divider().padding(.vertical, 4)
+
+            MenuButton(icon: "power", title: "종료") {
+                NSApplication.shared.terminate(nil)
+            }
         }
-        .frame(width: 280)
     }
 }
 
