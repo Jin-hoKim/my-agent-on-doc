@@ -20,11 +20,19 @@
 - `MyAgentOnDock/Views/MenuBarView.swift` — 최근 대화 메뉴 섹션 추가
 - `MyAgentOnDock/AppDelegate.swift` — 기존 구조 유지
 
+### Phase 5-5: App Store 배포 준비
+- `MyAgentOnDock/Info.plist` — NSAllowsArbitraryLoads=false, api.anthropic.com 도메인 예외 추가, displayName/minOS/copyright 추가
+- `MyAgentOnDock/MyAgentOnDock.entitlements` — 신규: App Sandbox (com.apple.security.app-sandbox=true), 네트워크 클라이언트 권한
+- `PRIVACY_POLICY.md` — 신규: 개인정보 처리방침 (로컬 저장, Anthropic API만 전송, 분석/추적 없음)
+
 ### 변경 사유
 - Phase 5-1: SSE 스트리밍으로 토큰 단위 실시간 응답 표시 (UX 개선)
 - Phase 5-2: 대화 기록 JSON 저장 → 앱 재시작 시 복원, 최근 대화 5개 메뉴바 표시
+- Phase 5-3: TTS 활성화 토글, 음성 선택(남성/여성/로봇), 테스트 재생 버튼 SettingsView 추가
 - Phase 5-4: AVSpeechSynthesizer TTS — 남성/여성/로봇 음성 3종 지원
+- Phase 5-5: App Store 제출 요건 충족 (Sandbox, 네트워크 클라이언트, 개인정보방침)
 - 빌드 에러 수정: DockCharacterView `.streaming` case 누락 → switch 문 보완
+- TTSService @unchecked Sendable 추가 (AVSpeechSynthesizer Sendable 경고 제거)
 
 ---
 

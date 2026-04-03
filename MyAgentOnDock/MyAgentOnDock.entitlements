@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- App Sandbox 활성화 (Mac App Store 필수) -->
+    <key>com.apple.security.app-sandbox</key>
+    <true/>
+
+    <!-- 네트워크 클라이언트 권한 (Claude API 호출용) -->
+    <key>com.apple.security.network.client</key>
+    <true/>
+
+    <!-- Application Support 파일 접근 (대화 기록 저장) -->
+    <!-- Sandbox 환경에서는 기본적으로 App Container에만 접근 가능 -->
+
+    <!-- 오디오 출력 (TTS 음성 출력) -->
+    <key>com.apple.security.device.audio-input</key>
+    <false/>
+</dict>
+</plist>
