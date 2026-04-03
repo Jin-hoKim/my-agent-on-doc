@@ -1,0 +1,675 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		052F6D6077EA4A7D02842BF6 /* blue_Sad bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 99570015CAF52011A8C0B5AB /* blue_Sad bot.json */; };
+		05417FD274DE96338DFA1585 /* VoiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1F28AF03BA704FE408002 /* VoiceType.swift */; };
+		071CE56AD5BB79521564B8E7 /* green_Winking Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 750793ADD73C409A737969FE /* green_Winking Face Bot.json */; };
+		08E542B489DF457C992566A2 /* icon_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 70CF21748C9A329B4A04E103 /* icon_64x64.png */; };
+		0B8358E650F091D82FDA3124 /* AgentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F904963B9D94CDDA824242 /* AgentState.swift */; };
+		11C32C9DABAC68946F055E5C /* green_Low Battery Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CF929BA43663EEC0F094CDB /* green_Low Battery Bot.json */; };
+		1319E2A8D2C360BF1BEBC239 /* green_Typing Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 9383AA8647FFF3D2E7428C4F /* green_Typing Face Bot.json */; };
+		18F6AEFC54EEA325E1BDE303 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A728D28DC31ED376F221FB40 /* Conversation.swift */; };
+		2000FC422D489E172F569833 /* blue_Angry bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F85A9979DBB8FDB532FA086 /* blue_Angry bot.json */; };
+		209093216269D371CB12193F /* PromptWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEDC9153477ECF67C7AF6BF /* PromptWindowView.swift */; };
+		2283B0770317C96E66F3F62F /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 381EDA5A556528BF26C3CF3E /* Contents.json */; };
+		2A59BE78633E941DD3A9913C /* green_Sad Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 067928EA60824DAFE378E933 /* green_Sad Face Bot.json */; };
+		2B5E63E4C5A286E4AD316966 /* universfield-error-011-352286.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 09E3A3293E2D2225DC55F297 /* universfield-error-011-352286.mp3 */; };
+		2C2872DF79D1B2C32CD4C898 /* blue_Heart bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 88936C7F1F6AE2246A7D75D7 /* blue_Heart bot.json */; };
+		2FB4F643B6A4858767855E45 /* green_Loading Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = C66699E8377A272AD95FF018 /* green_Loading Face Bot.json */; };
+		37F82EAD8434CB75326EC90A /* blue_Typing face.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C48AC62F8F9FD3F30E424EC /* blue_Typing face.json */; };
+		3BB60431C9DEDF97FA965318 /* blue_Unknown face.json in Resources */ = {isa = PBXBuildFile; fileRef = 800AA692811FA163CBB06EA0 /* blue_Unknown face.json */; };
+		40F14EA055A2F6E2EAB209A4 /* green_Pleased Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = C9C144CD80442A1F88CFA654 /* green_Pleased Face Bot.json */; };
+		4D28CE501143E84981648B7A /* DockCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB0BDBD912D029098409EC8 /* DockCharacterView.swift */; };
+		517D09EB065D85D43291E82B /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2337E265B1A00A2E1F6AD6 /* MenuBarView.swift */; };
+		58C1E81C86B97325D4E1C20C /* blue_Pleased face.json in Resources */ = {isa = PBXBuildFile; fileRef = 601A1773F0517E895ECB5B2B /* blue_Pleased face.json */; };
+		5B721FED8BCDA27CDB4EE7E7 /* blue_Nuetral face.json in Resources */ = {isa = PBXBuildFile; fileRef = 130B4DE90FA3DDA05D72A301 /* blue_Nuetral face.json */; };
+		5F076FEB9F083D6CFF604B47 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D88001AB3E7885B047B8C7 /* SettingsView.swift */; };
+		60858AC04C4079A6426989EF /* green_Snoozing Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = E0B7FFA43C27BF511568A3BD /* green_Snoozing Bot.json */; };
+		61D71EED06596AB47D24EBF8 /* universfield-new-notification-028-383966.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 552F9823297FEEBA8870A477 /* universfield-new-notification-028-383966.mp3 */; };
+		66BD6BE9704C3AA6DF1E92EF /* universfield-new-notification-027-383749.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D1F452199EC920F8A38C3A0 /* universfield-new-notification-027-383749.mp3 */; };
+		6A71598C65AFA4462EA13895 /* blue_Out of service face.json in Resources */ = {isa = PBXBuildFile; fileRef = ED8822B5D6690B9789E6638B /* blue_Out of service face.json */; };
+		6EC271E649037A0B780209E0 /* green_Error Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = EEE0EFEC13DC307D234AA895 /* green_Error Bot.json */; };
+		7276626BECC6D5F6060CF5F2 /* mightuser-sound-of-error-beep-hd-267280.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4365A9ADDE464D8107309D2F /* mightuser-sound-of-error-beep-hd-267280.mp3 */; };
+		76DBA87CD00FB7B20318EDE8 /* icon_128x128.png in Resources */ = {isa = PBXBuildFile; fileRef = 078AE963D67B75AF54EA17F7 /* icon_128x128.png */; };
+		79708E7BB8CFC9DB73908FDA /* green_Out Of Service Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = A7AEA9669202B4DC530E31CF /* green_Out Of Service Face Bot.json */; };
+		79C7BFE274CC1D35E6756B56 /* ClaudeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FE44A6CFD24FCA51FDDBA7 /* ClaudeAPIService.swift */; };
+		79EA0C8E96970DABAF2BBB17 /* icon_1024x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A2789760A5C237DD92BA7A /* icon_1024x1024.png */; };
+		7BBD1C320CB674F396A7DC52 /* icon_512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = 959F9E4C1742641070863894 /* icon_512x512.png */; };
+		7CB8D8372D0C9C4AFE45BD38 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E563835D6AEAC6CF06CE43A1 /* AppSettings.swift */; };
+		84493CFC24E1C0B32C2E2132 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DC6DAA11A972D2AD058AA0 /* AppDelegate.swift */; };
+		883B23C1FBF8596B380E3567 /* green_Laughing Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 35BFA761B34FC5F3732DE305 /* green_Laughing Bot.json */; };
+		88DBE4CE7F70D4903B0F35C7 /* green_Voice Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 40036272299FA3C85AD4B3D0 /* green_Voice Face Bot.json */; };
+		8C0C13BD42F3C56390C1F0D3 /* TTSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B97C94D2CFFAE76198ADBD /* TTSService.swift */; };
+		93B15566091EE477123436ED /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A45CF3920785C6FDE602D0 /* ChatMessage.swift */; };
+		99AB35FC4CC6932E0F31FACF /* ChatHistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6627EE96B35D3A89682A92E /* ChatHistoryService.swift */; };
+		9CC8E48B39F51F484895D8F5 /* blue_Surprised face.json in Resources */ = {isa = PBXBuildFile; fileRef = CFCA9B807562FFCA4A8A06FA /* blue_Surprised face.json */; };
+		A1CA34A86D85BCAD57A14701 /* blue_Loading face.json in Resources */ = {isa = PBXBuildFile; fileRef = D3A4A68A9D149E008392884F /* blue_Loading face.json */; };
+		AB31CE49BFBE952C5F9808B2 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = EACD705BD164F8331D7CF417 /* Lottie */; };
+		AD836341A07B33DCF5BB0223 /* PanelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15B88F51908CB20C12DE12 /* PanelManager.swift */; };
+		B6B7745964F83B1AFEB14FEB /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A903D1DF94C1C6AF2F95C0E2 /* LottieView.swift */; };
+		B9FC3B9D98506F50F5649D1F /* green_Surprised Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD61E614BA0286EE0D6D1C /* green_Surprised Face Bot.json */; };
+		BE36E6B3FC09675938879F1A /* green_Crazy Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F067FBAB0AA26FE297AB122 /* green_Crazy Face Bot.json */; };
+		CF5F929BEB42F56E05D8889C /* green_Normal Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = D37A30C29DE5D693CE20F527 /* green_Normal Face Bot.json */; };
+		D01F088E331CCAA20188802A /* icon_16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF0F2769CE0EE597F6FB9B /* icon_16x16.png */; };
+		D6E87A425B10CA8108550C97 /* blue_Winking face.json in Resources */ = {isa = PBXBuildFile; fileRef = FB25467EDA6C15A7E2BEC16F /* blue_Winking face.json */; };
+		DDF911D5EA9B32B19B23A309 /* icon_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E7F4FDD4D2533ACF089E32F /* icon_256x256.png */; };
+		E55FEB88824D5AA8B050DF98 /* icon_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B6839A34D0524023F6D5690 /* icon_32x32.png */; };
+		E5D44B06A31856469EB80EE6 /* green_Unknown Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 75ECF3CD01D2C9326C413C36 /* green_Unknown Face Bot.json */; };
+		E71893F323FBF0CD927BB2F8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8FC5D778C17FDACC000991 /* main.swift */; };
+		E82B03177E2F7D1CFEA5F6A2 /* ClaudeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD3683F78CD17A1C5474DAA /* ClaudeModel.swift */; };
+		E89EF1EBD9E376F01E7B982D /* green_Nuetral Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 80C91616B6DFB746426B52E6 /* green_Nuetral Face Bot.json */; };
+		EE1D2F754354BF2D7F20DF33 /* blue_Voice face.json in Resources */ = {isa = PBXBuildFile; fileRef = A2D00A9BC6D4E85297F7976D /* blue_Voice face.json */; };
+		EE72AE2FBD48DAB74B3B2FFC /* freesound_community-3beeps-108353.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4BEEE66971DCDFC41542350A /* freesound_community-3beeps-108353.mp3 */; };
+		F0F3530A9A1798D9A1630E89 /* CharacterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC9368ABBB1E60F756C49EC /* CharacterType.swift */; };
+		F3CEE5AF04108E4B6BD5B356 /* blue_New Message bot.json in Resources */ = {isa = PBXBuildFile; fileRef = A82F1A3FAD8C339B355CC390 /* blue_New Message bot.json */; };
+		F4F30C3CEE8AAB065F772EA1 /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15A78D3EDF716108F570CF /* SoundService.swift */; };
+		F7CBB6F7B52183A2E762B409 /* MyAgentOnDockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D098E294B5F75F544F4FF8 /* MyAgentOnDockApp.swift */; };
+		AAAA000100010001AAAA0001 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = AAAA000100010001AAAA0002 /* AppIcon.icns */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		067928EA60824DAFE378E933 /* green_Sad Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Sad Face Bot.json"; sourceTree = "<group>"; };
+		078AE963D67B75AF54EA17F7 /* icon_128x128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_128x128.png; sourceTree = "<group>"; };
+		09E3A3293E2D2225DC55F297 /* universfield-error-011-352286.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "universfield-error-011-352286.mp3"; sourceTree = "<group>"; };
+		0EBF0F2769CE0EE597F6FB9B /* icon_16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_16x16.png; sourceTree = "<group>"; };
+		0F067FBAB0AA26FE297AB122 /* green_Crazy Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Crazy Face Bot.json"; sourceTree = "<group>"; };
+		130B4DE90FA3DDA05D72A301 /* blue_Nuetral face.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_Nuetral face.json"; sourceTree = "<group>"; };
+		17F904963B9D94CDDA824242 /* AgentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentState.swift; sourceTree = "<group>"; };
+		1B6839A34D0524023F6D5690 /* icon_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_32x32.png; sourceTree = "<group>"; };
+		1BC9368ABBB1E60F756C49EC /* CharacterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterType.swift; sourceTree = "<group>"; };
+		35BFA761B34FC5F3732DE305 /* green_Laughing Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Laughing Bot.json"; sourceTree = "<group>"; };
+		381EDA5A556528BF26C3CF3E /* Contents.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
+		3D1F452199EC920F8A38C3A0 /* universfield-new-notification-027-383749.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "universfield-new-notification-027-383749.mp3"; sourceTree = "<group>"; };
+		3E7F4FDD4D2533ACF089E32F /* icon_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_256x256.png; sourceTree = "<group>"; };
+		40036272299FA3C85AD4B3D0 /* green_Voice Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Voice Face Bot.json"; sourceTree = "<group>"; };
+		4365A9ADDE464D8107309D2F /* mightuser-sound-of-error-beep-hd-267280.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "mightuser-sound-of-error-beep-hd-267280.mp3"; sourceTree = "<group>"; };
+		4BEEE66971DCDFC41542350A /* freesound_community-3beeps-108353.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "freesound_community-3beeps-108353.mp3"; sourceTree = "<group>"; };
+		552F9823297FEEBA8870A477 /* universfield-new-notification-028-383966.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "universfield-new-notification-028-383966.mp3"; sourceTree = "<group>"; };
+		56DC6DAA11A972D2AD058AA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5A2337E265B1A00A2E1F6AD6 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		5E15B88F51908CB20C12DE12 /* PanelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelManager.swift; sourceTree = "<group>"; };
+		5F85A9979DBB8FDB532FA086 /* blue_Angry bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_Angry bot.json"; sourceTree = "<group>"; };
+		601A1773F0517E895ECB5B2B /* blue_Pleased face.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_Pleased face.json"; sourceTree = "<group>"; };
+		61FE44A6CFD24FCA51FDDBA7 /* ClaudeAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeAPIService.swift; sourceTree = "<group>"; };
+		6AEDC9153477ECF67C7AF6BF /* PromptWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptWindowView.swift; sourceTree = "<group>"; };
+		6C48AC62F8F9FD3F30E424EC /* blue_Typing face.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_Typing face.json"; sourceTree = "<group>"; };
+		70CF21748C9A329B4A04E103 /* icon_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_64x64.png; sourceTree = "<group>"; };
+		750793ADD73C409A737969FE /* green_Winking Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Winking Face Bot.json"; sourceTree = "<group>"; };
+		75ECF3CD01D2C9326C413C36 /* green_Unknown Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Unknown Face Bot.json"; sourceTree = "<group>"; };
+		800AA692811FA163CBB06EA0 /* blue_Unknown face.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_Unknown face.json"; sourceTree = "<group>"; };
+		80C91616B6DFB746426B52E6 /* green_Nuetral Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Nuetral Face Bot.json"; sourceTree = "<group>"; };
+		81D098E294B5F75F544F4FF8 /* MyAgentOnDockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAgentOnDockApp.swift; sourceTree = "<group>"; };
+		87B97C94D2CFFAE76198ADBD /* TTSService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSService.swift; sourceTree = "<group>"; };
+		88936C7F1F6AE2246A7D75D7 /* blue_Heart bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_Heart bot.json"; sourceTree = "<group>"; };
+		8CF929BA43663EEC0F094CDB /* green_Low Battery Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Low Battery Bot.json"; sourceTree = "<group>"; };
+		8D8FC5D778C17FDACC000991 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		9383AA8647FFF3D2E7428C4F /* green_Typing Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Typing Face Bot.json"; sourceTree = "<group>"; };
+		959F9E4C1742641070863894 /* icon_512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_512x512.png; sourceTree = "<group>"; };
+		99570015CAF52011A8C0B5AB /* blue_Sad bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_Sad bot.json"; sourceTree = "<group>"; };
+		9CDD61E614BA0286EE0D6D1C /* green_Surprised Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Surprised Face Bot.json"; sourceTree = "<group>"; };
+		9F15A78D3EDF716108F570CF /* SoundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundService.swift; sourceTree = "<group>"; };
+		A1A2789760A5C237DD92BA7A /* icon_1024x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_1024x1024.png; sourceTree = "<group>"; };
+		A2D00A9BC6D4E85297F7976D /* blue_Voice face.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_Voice face.json"; sourceTree = "<group>"; };
+		A6627EE96B35D3A89682A92E /* ChatHistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHistoryService.swift; sourceTree = "<group>"; };
+		A728D28DC31ED376F221FB40 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		A7AEA9669202B4DC530E31CF /* green_Out Of Service Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Out Of Service Face Bot.json"; sourceTree = "<group>"; };
+		A82F1A3FAD8C339B355CC390 /* blue_New Message bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_New Message bot.json"; sourceTree = "<group>"; };
+		A903D1DF94C1C6AF2F95C0E2 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		A90D2B64870D3E45B8353F30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C0215AA15C7B1F7C55C178F5 /* Dockling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dockling.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1A45CF3920785C6FDE602D0 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		C455C9AD187CD7C50AB5C208 /* MyAgentOnDock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyAgentOnDock.entitlements; sourceTree = "<group>"; };
+		C66699E8377A272AD95FF018 /* green_Loading Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Loading Face Bot.json"; sourceTree = "<group>"; };
+		C9C144CD80442A1F88CFA654 /* green_Pleased Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Pleased Face Bot.json"; sourceTree = "<group>"; };
+		CEA1F28AF03BA704FE408002 /* VoiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceType.swift; sourceTree = "<group>"; };
+		CFCA9B807562FFCA4A8A06FA /* blue_Surprised face.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_Surprised face.json"; sourceTree = "<group>"; };
+		D24C222DCA1D7D1BCEABF07F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		D37A30C29DE5D693CE20F527 /* green_Normal Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Normal Face Bot.json"; sourceTree = "<group>"; };
+		D3A4A68A9D149E008392884F /* blue_Loading face.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_Loading face.json"; sourceTree = "<group>"; };
+		DBB0BDBD912D029098409EC8 /* DockCharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockCharacterView.swift; sourceTree = "<group>"; };
+		DCD3683F78CD17A1C5474DAA /* ClaudeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeModel.swift; sourceTree = "<group>"; };
+		E0B7FFA43C27BF511568A3BD /* green_Snoozing Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Snoozing Bot.json"; sourceTree = "<group>"; };
+		E563835D6AEAC6CF06CE43A1 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		ED8822B5D6690B9789E6638B /* blue_Out of service face.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_Out of service face.json"; sourceTree = "<group>"; };
+		EEE0EFEC13DC307D234AA895 /* green_Error Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Error Bot.json"; sourceTree = "<group>"; };
+		F4D88001AB3E7885B047B8C7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		FB25467EDA6C15A7E2BEC16F /* blue_Winking face.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_Winking face.json"; sourceTree = "<group>"; };
+		AAAA000100010001AAAA0002 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E8FD7D962BE366CA56739D84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB31CE49BFBE952C5F9808B2 /* Lottie in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		46C0EA36D21AD2B89B2699D2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F416B71BF8780A22B30B7DEC /* Animations */,
+				6466D98F31F4388272674DB5 /* AppIcon.appiconset */,
+				AAAA000100010001AAAA0002 /* AppIcon.icns */,
+				54805FE25D5A298ABC83A445 /* Sounds */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		54805FE25D5A298ABC83A445 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				4BEEE66971DCDFC41542350A /* freesound_community-3beeps-108353.mp3 */,
+				4365A9ADDE464D8107309D2F /* mightuser-sound-of-error-beep-hd-267280.mp3 */,
+				09E3A3293E2D2225DC55F297 /* universfield-error-011-352286.mp3 */,
+				3D1F452199EC920F8A38C3A0 /* universfield-new-notification-027-383749.mp3 */,
+				552F9823297FEEBA8870A477 /* universfield-new-notification-028-383966.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		6466D98F31F4388272674DB5 /* AppIcon.appiconset */ = {
+			isa = PBXGroup;
+			children = (
+				381EDA5A556528BF26C3CF3E /* Contents.json */,
+				0EBF0F2769CE0EE597F6FB9B /* icon_16x16.png */,
+				1B6839A34D0524023F6D5690 /* icon_32x32.png */,
+				70CF21748C9A329B4A04E103 /* icon_64x64.png */,
+				078AE963D67B75AF54EA17F7 /* icon_128x128.png */,
+				3E7F4FDD4D2533ACF089E32F /* icon_256x256.png */,
+				959F9E4C1742641070863894 /* icon_512x512.png */,
+				A1A2789760A5C237DD92BA7A /* icon_1024x1024.png */,
+			);
+			path = AppIcon.appiconset;
+			sourceTree = "<group>";
+		};
+		6CB476406FC1E7CDBBB887F4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DBB0BDBD912D029098409EC8 /* DockCharacterView.swift */,
+				A903D1DF94C1C6AF2F95C0E2 /* LottieView.swift */,
+				5A2337E265B1A00A2E1F6AD6 /* MenuBarView.swift */,
+				6AEDC9153477ECF67C7AF6BF /* PromptWindowView.swift */,
+				F4D88001AB3E7885B047B8C7 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6E01E3D7BE443981F1CB2AF0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				17F904963B9D94CDDA824242 /* AgentState.swift */,
+				1BC9368ABBB1E60F756C49EC /* CharacterType.swift */,
+				C1A45CF3920785C6FDE602D0 /* ChatMessage.swift */,
+				DCD3683F78CD17A1C5474DAA /* ClaudeModel.swift */,
+				A728D28DC31ED376F221FB40 /* Conversation.swift */,
+				CEA1F28AF03BA704FE408002 /* VoiceType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8C149E71C92293FCF4133BD1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E563835D6AEAC6CF06CE43A1 /* AppSettings.swift */,
+				A6627EE96B35D3A89682A92E /* ChatHistoryService.swift */,
+				61FE44A6CFD24FCA51FDDBA7 /* ClaudeAPIService.swift */,
+				5E15B88F51908CB20C12DE12 /* PanelManager.swift */,
+				9F15A78D3EDF716108F570CF /* SoundService.swift */,
+				87B97C94D2CFFAE76198ADBD /* TTSService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C348E355277E95E9E15706D2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C0215AA15C7B1F7C55C178F5 /* Dockling.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D99D4BE27B33B50DB9A554B8 = {
+			isa = PBXGroup;
+			children = (
+				F3F1A2791810A57CE1C36C99 /* MyAgentOnDock */,
+				C348E355277E95E9E15706D2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F3F1A2791810A57CE1C36C99 /* MyAgentOnDock */ = {
+			isa = PBXGroup;
+			children = (
+				56DC6DAA11A972D2AD058AA0 /* AppDelegate.swift */,
+				A90D2B64870D3E45B8353F30 /* Info.plist */,
+				8D8FC5D778C17FDACC000991 /* main.swift */,
+				C455C9AD187CD7C50AB5C208 /* MyAgentOnDock.entitlements */,
+				81D098E294B5F75F544F4FF8 /* MyAgentOnDockApp.swift */,
+				6E01E3D7BE443981F1CB2AF0 /* Models */,
+				46C0EA36D21AD2B89B2699D2 /* Resources */,
+				8C149E71C92293FCF4133BD1 /* Services */,
+				6CB476406FC1E7CDBBB887F4 /* Views */,
+			);
+			path = MyAgentOnDock;
+			sourceTree = "<group>";
+		};
+		F416B71BF8780A22B30B7DEC /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				D24C222DCA1D7D1BCEABF07F /* .gitkeep */,
+				5F85A9979DBB8FDB532FA086 /* blue_Angry bot.json */,
+				88936C7F1F6AE2246A7D75D7 /* blue_Heart bot.json */,
+				D3A4A68A9D149E008392884F /* blue_Loading face.json */,
+				A82F1A3FAD8C339B355CC390 /* blue_New Message bot.json */,
+				130B4DE90FA3DDA05D72A301 /* blue_Nuetral face.json */,
+				ED8822B5D6690B9789E6638B /* blue_Out of service face.json */,
+				601A1773F0517E895ECB5B2B /* blue_Pleased face.json */,
+				99570015CAF52011A8C0B5AB /* blue_Sad bot.json */,
+				CFCA9B807562FFCA4A8A06FA /* blue_Surprised face.json */,
+				6C48AC62F8F9FD3F30E424EC /* blue_Typing face.json */,
+				800AA692811FA163CBB06EA0 /* blue_Unknown face.json */,
+				A2D00A9BC6D4E85297F7976D /* blue_Voice face.json */,
+				FB25467EDA6C15A7E2BEC16F /* blue_Winking face.json */,
+				0F067FBAB0AA26FE297AB122 /* green_Crazy Face Bot.json */,
+				EEE0EFEC13DC307D234AA895 /* green_Error Bot.json */,
+				35BFA761B34FC5F3732DE305 /* green_Laughing Bot.json */,
+				C66699E8377A272AD95FF018 /* green_Loading Face Bot.json */,
+				8CF929BA43663EEC0F094CDB /* green_Low Battery Bot.json */,
+				D37A30C29DE5D693CE20F527 /* green_Normal Face Bot.json */,
+				80C91616B6DFB746426B52E6 /* green_Nuetral Face Bot.json */,
+				A7AEA9669202B4DC530E31CF /* green_Out Of Service Face Bot.json */,
+				C9C144CD80442A1F88CFA654 /* green_Pleased Face Bot.json */,
+				067928EA60824DAFE378E933 /* green_Sad Face Bot.json */,
+				E0B7FFA43C27BF511568A3BD /* green_Snoozing Bot.json */,
+				9CDD61E614BA0286EE0D6D1C /* green_Surprised Face Bot.json */,
+				9383AA8647FFF3D2E7428C4F /* green_Typing Face Bot.json */,
+				75ECF3CD01D2C9326C413C36 /* green_Unknown Face Bot.json */,
+				40036272299FA3C85AD4B3D0 /* green_Voice Face Bot.json */,
+				750793ADD73C409A737969FE /* green_Winking Face Bot.json */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3190F57CF713717A3FEE7E28 /* Dockling */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83329785439F1189C7B903C0 /* Build configuration list for PBXNativeTarget "Dockling" */;
+			buildPhases = (
+				2FB04E1CA0CC254117FB915A /* Sources */,
+				59D2F7E0F2A7502D5F9B5DEF /* Resources */,
+				E8FD7D962BE366CA56739D84 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dockling;
+			packageProductDependencies = (
+				EACD705BD164F8331D7CF417 /* Lottie */,
+			);
+			productName = Dockling;
+			productReference = C0215AA15C7B1F7C55C178F5 /* Dockling.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3E15EC00A817668484D6F3CE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					3190F57CF713717A3FEE7E28 = {
+						DevelopmentTeam = 5376EHCG2P;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 273C073861045AFE3876EFC1 /* Build configuration list for PBXProject "Dockling" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = D99D4BE27B33B50DB9A554B8;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				62AAE70361695C944F5A5C10 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = C348E355277E95E9E15706D2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3190F57CF713717A3FEE7E28 /* Dockling */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		59D2F7E0F2A7502D5F9B5DEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2283B0770317C96E66F3F62F /* Contents.json in Resources */,
+				2000FC422D489E172F569833 /* blue_Angry bot.json in Resources */,
+				2C2872DF79D1B2C32CD4C898 /* blue_Heart bot.json in Resources */,
+				A1CA34A86D85BCAD57A14701 /* blue_Loading face.json in Resources */,
+				F3CEE5AF04108E4B6BD5B356 /* blue_New Message bot.json in Resources */,
+				5B721FED8BCDA27CDB4EE7E7 /* blue_Nuetral face.json in Resources */,
+				6A71598C65AFA4462EA13895 /* blue_Out of service face.json in Resources */,
+				58C1E81C86B97325D4E1C20C /* blue_Pleased face.json in Resources */,
+				052F6D6077EA4A7D02842BF6 /* blue_Sad bot.json in Resources */,
+				9CC8E48B39F51F484895D8F5 /* blue_Surprised face.json in Resources */,
+				37F82EAD8434CB75326EC90A /* blue_Typing face.json in Resources */,
+				3BB60431C9DEDF97FA965318 /* blue_Unknown face.json in Resources */,
+				EE1D2F754354BF2D7F20DF33 /* blue_Voice face.json in Resources */,
+				D6E87A425B10CA8108550C97 /* blue_Winking face.json in Resources */,
+				EE72AE2FBD48DAB74B3B2FFC /* freesound_community-3beeps-108353.mp3 in Resources */,
+				BE36E6B3FC09675938879F1A /* green_Crazy Face Bot.json in Resources */,
+				6EC271E649037A0B780209E0 /* green_Error Bot.json in Resources */,
+				883B23C1FBF8596B380E3567 /* green_Laughing Bot.json in Resources */,
+				2FB4F643B6A4858767855E45 /* green_Loading Face Bot.json in Resources */,
+				11C32C9DABAC68946F055E5C /* green_Low Battery Bot.json in Resources */,
+				CF5F929BEB42F56E05D8889C /* green_Normal Face Bot.json in Resources */,
+				E89EF1EBD9E376F01E7B982D /* green_Nuetral Face Bot.json in Resources */,
+				79708E7BB8CFC9DB73908FDA /* green_Out Of Service Face Bot.json in Resources */,
+				40F14EA055A2F6E2EAB209A4 /* green_Pleased Face Bot.json in Resources */,
+				2A59BE78633E941DD3A9913C /* green_Sad Face Bot.json in Resources */,
+				60858AC04C4079A6426989EF /* green_Snoozing Bot.json in Resources */,
+				B9FC3B9D98506F50F5649D1F /* green_Surprised Face Bot.json in Resources */,
+				1319E2A8D2C360BF1BEBC239 /* green_Typing Face Bot.json in Resources */,
+				E5D44B06A31856469EB80EE6 /* green_Unknown Face Bot.json in Resources */,
+				88DBE4CE7F70D4903B0F35C7 /* green_Voice Face Bot.json in Resources */,
+				071CE56AD5BB79521564B8E7 /* green_Winking Face Bot.json in Resources */,
+				79EA0C8E96970DABAF2BBB17 /* icon_1024x1024.png in Resources */,
+				76DBA87CD00FB7B20318EDE8 /* icon_128x128.png in Resources */,
+				D01F088E331CCAA20188802A /* icon_16x16.png in Resources */,
+				DDF911D5EA9B32B19B23A309 /* icon_256x256.png in Resources */,
+				E55FEB88824D5AA8B050DF98 /* icon_32x32.png in Resources */,
+				7BBD1C320CB674F396A7DC52 /* icon_512x512.png in Resources */,
+				08E542B489DF457C992566A2 /* icon_64x64.png in Resources */,
+				7276626BECC6D5F6060CF5F2 /* mightuser-sound-of-error-beep-hd-267280.mp3 in Resources */,
+				2B5E63E4C5A286E4AD316966 /* universfield-error-011-352286.mp3 in Resources */,
+				66BD6BE9704C3AA6DF1E92EF /* universfield-new-notification-027-383749.mp3 in Resources */,
+				61D71EED06596AB47D24EBF8 /* universfield-new-notification-028-383966.mp3 in Resources */,
+				AAAA000100010001AAAA0001 /* AppIcon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2FB04E1CA0CC254117FB915A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B8358E650F091D82FDA3124 /* AgentState.swift in Sources */,
+				84493CFC24E1C0B32C2E2132 /* AppDelegate.swift in Sources */,
+				7CB8D8372D0C9C4AFE45BD38 /* AppSettings.swift in Sources */,
+				F0F3530A9A1798D9A1630E89 /* CharacterType.swift in Sources */,
+				99AB35FC4CC6932E0F31FACF /* ChatHistoryService.swift in Sources */,
+				93B15566091EE477123436ED /* ChatMessage.swift in Sources */,
+				79C7BFE274CC1D35E6756B56 /* ClaudeAPIService.swift in Sources */,
+				E82B03177E2F7D1CFEA5F6A2 /* ClaudeModel.swift in Sources */,
+				18F6AEFC54EEA325E1BDE303 /* Conversation.swift in Sources */,
+				4D28CE501143E84981648B7A /* DockCharacterView.swift in Sources */,
+				B6B7745964F83B1AFEB14FEB /* LottieView.swift in Sources */,
+				517D09EB065D85D43291E82B /* MenuBarView.swift in Sources */,
+				F7CBB6F7B52183A2E762B409 /* MyAgentOnDockApp.swift in Sources */,
+				AD836341A07B33DCF5BB0223 /* PanelManager.swift in Sources */,
+				209093216269D371CB12193F /* PromptWindowView.swift in Sources */,
+				5F076FEB9F083D6CFF604B47 /* SettingsView.swift in Sources */,
+				F4F30C3CEE8AAB065F772EA1 /* SoundService.swift in Sources */,
+				8C0C13BD42F3C56390C1F0D3 /* TTSService.swift in Sources */,
+				05417FD274DE96338DFA1585 /* VoiceType.swift in Sources */,
+				E71893F323FBF0CD927BB2F8 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		62BC083B5FB8AB011B01A8CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = MyAgentOnDock/MyAgentOnDock.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5376EHCG2P;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MyAgentOnDock/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jinhokim.myagentondock;
+				PRODUCT_NAME = Dockling;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		6931FDE608523F578A929234 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = MyAgentOnDock/MyAgentOnDock.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5376EHCG2P;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MyAgentOnDock/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jinhokim.myagentondock;
+				PRODUCT_NAME = Dockling;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		C105CDE68F06E4089A61A160 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		DA43B26517A3E578E997E7D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		273C073861045AFE3876EFC1 /* Build configuration list for PBXProject "Dockling" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA43B26517A3E578E997E7D0 /* Debug */,
+				C105CDE68F06E4089A61A160 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		83329785439F1189C7B903C0 /* Build configuration list for PBXNativeTarget "Dockling" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6931FDE608523F578A929234 /* Debug */,
+				62BC083B5FB8AB011B01A8CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		62AAE70361695C944F5A5C10 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EACD705BD164F8331D7CF417 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62AAE70361695C944F5A5C10 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 3E15EC00A817668484D6F3CE /* Project object */;
+}
