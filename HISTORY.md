@@ -1,5 +1,28 @@
 # 변경 이력
 
+## 2026-04-03 - Team 모드 구현 + 메뉴바 팝오버 버그 수정
+
+### 신규 파일 (Team 모드)
+- `MyAgentOnDock/Models/AgentRole.swift` — 역할별 이모지 매핑 (leader/frontend/backend 등)
+- `MyAgentOnDock/Models/TeamAgent.swift` — 팀 에이전트 모델 (id/model/name/emoji/isActive)
+- `MyAgentOnDock/Models/TeamConfiguration.swift` — agents.json 구조 + 파싱 함수
+- `MyAgentOnDock/Services/AgentsConfigService.swift` — agents.json 파싱/FSEvents 감시
+- `MyAgentOnDock/Services/BookmarkService.swift` — Security-Scoped Bookmark 관리
+- `MyAgentOnDock/Services/ProcessMonitorService.swift` — Claude CLI 프로세스 감지 (ps aux, 3초 폴링)
+- `MyAgentOnDock/Services/TeamPanelManager.swift` — 멀티 캐릭터 NSPanel (동적 너비)
+- `MyAgentOnDock/Views/AgentCharacterView.swift` — 개별 에이전트 캐릭터 뷰 (이모지+상태표시)
+- `MyAgentOnDock/Views/TeamDockView.swift` — HStack 기반 멀티 캐릭터 Dock 뷰
+- `MyAgentOnDock/Views/SetupView.swift` — 프로젝트 폴더 선택 + agents.json 미리보기 + 연결 UI
+
+### 수정 파일
+- `MyAgentOnDock/AppDelegate.swift` — @MainActor 추가, NSStatusItem+NSPopover 메뉴바 구현, Team 모드 서비스 체인 초기화
+- `MyAgentOnDock/main.swift` — MainActor.assumeIsolated로 @MainActor AppDelegate 초기화
+- `MyAgentOnDock/MyAgentOnDockApp.swift` — @main 제거, AppDelegate로 위임
+
+### 버그 수정
+- 메뉴바 아이콘 클릭 시 팝오버 미표시 문제: MenuBarExtra(.window) + .accessory 정책 충돌
+  → NSStatusItem + NSPopover(.transient) 직접 구현으로 교체
+
 ## 2026-04-03 - Phase 5 기능 구현 완료 (SSE 스트리밍, 대화 저장, TTS)
 
 ### 신규 파일

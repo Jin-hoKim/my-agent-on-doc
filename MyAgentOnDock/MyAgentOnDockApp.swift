@@ -1,22 +1,3 @@
-import SwiftUI
-
-// 메인 앱 구조체
-struct MyAgentOnDockApp: App {
-    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-
-    var body: some Scene {
-        MenuBarExtra {
-            MenuBarContentView()
-        } label: {
-            Image(systemName: "sparkle")
-        }
-        .menuBarExtraStyle(.window)
-    }
-}
-
-// 메뉴바 콘텐츠 래퍼
-struct MenuBarContentView: View {
-    var body: some View {
-        MenuBarView()
-    }
-}
+// MyAgentOnDockApp.swift
+// @main을 main.swift로 이동했으므로 이 파일은 빈 상태로 유지
+// AppDelegate가 앱 생명주기 전체를 담당
