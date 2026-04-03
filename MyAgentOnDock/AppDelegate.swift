@@ -97,13 +97,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         if let button = statusItem?.button {
             button.image = NSImage(systemSymbolName: "sparkle", accessibilityDescription: "My Agent on Dock")
-            button.action = #selector(togglePopover)
+            button.action = #selector(togglePopover(_:))
             button.target = self
+            button.sendAction(on: [.leftMouseUp])
         }
 
         let pop = NSPopover()
         pop.contentSize = NSSize(width: 280, height: 380)
-        pop.behavior = .transient
+        pop.behavior = .applicationDefined
         pop.animates = true
         pop.contentViewController = NSHostingController(
             rootView: MenuBarView()
@@ -112,14 +113,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover = pop
     }
 
-    @objc func togglePopover() {
+    @objc func togglePopover(_ sender: AnyObject?) {
         guard let button = statusItem?.button, let pop = popover else { return }
 
         if pop.isShown {
             pop.performClose(nil)
         } else {
-            pop.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
             NSApp.activate(ignoringOtherApps: true)
+            pop.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
         }
     }
 

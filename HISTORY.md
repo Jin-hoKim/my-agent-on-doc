@@ -1,5 +1,19 @@
 # 변경 이력
 
+## 2026-04-03 - 메뉴바 팝오버 안열림 버그 수정
+
+### 수정 파일
+- `MyAgentOnDock/AppDelegate.swift`
+  - `togglePopover` 메서드: `NSApp.activate(ignoringOtherApps: true)` 호출 순서를 `pop.show()` 이전으로 변경 (이전: show→activate로 `.transient` behavior가 즉시 닫아버림)
+  - `NSPopover.behavior`: `.transient` → `.applicationDefined` (앱이 활성화되어도 팝오버 유지)
+  - 버튼 action: `#selector(togglePopover)` → `#selector(togglePopover(_:))` (sender 파라미터 일치)
+  - `button.sendAction(on: [.leftMouseUp])` 추가 (마우스업 이벤트로 정확히 트리거)
+
+### 빌드 결과
+경고 0, 에러 0, Build complete
+
+---
+
 ## 2026-04-03 - 캐릭터 표정 다양화 (20가지 감정 상태)
 
 ### 수정 파일
