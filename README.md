@@ -1,52 +1,84 @@
-# My Agent on Dock
+# Docklings
 
-macOS Dock 위에 AI 에이전트 캐릭터를 표시하는 앱. Claude API로 작동하는 **Solo 모드** 개인 AI 비서.
+A charming AI companion that lives right above your macOS Dock. Powered by Claude, it features animated robot characters that express emotions and react to conversations in real time.
 
-## 주요 기능
+<p align="center">
+  <img src="https://github.com/Jin-hoKim/my-agent-on-doc/raw/main/docs/screenshots/docklings-hero.png" alt="Docklings" width="600">
+</p>
 
-- **Dock 위 캐릭터**: AI 에이전트 캐릭터가 Dock 위에 상시 표시
-- **프롬프트 대화**: 캐릭터 클릭 → 대화 창 → Claude와 채팅 (SSE 스트리밍)
-- **대화 기록**: 로컬 저장, 최근 5개 메뉴바 바로가기
-- **캐릭터 커스터마이징**: 6종 캐릭터 (20가지 표정), 크기 조절
-- **모델 선택**: Haiku / Sonnet / Opus
-- **TTS 음성**: 응답 읽어주기 (남성/여성/로봇)
-- **메뉴바 컨트롤**: 상태 확인, 설정, 토글
+## Features
 
-## 요구사항
+- **Dock Companion** — An animated AI character sits above your Dock, always ready to chat
+- **Real-time Conversation** — Click the character to open a chat window powered by Claude (SSE streaming)
+- **Expressive Animations** — 6 characters with 20+ Lottie-animated expressions that react to conversation context
+- **Chat History** — Conversations saved locally with quick access from the menu bar
+- **Model Selection** — Choose between Claude Haiku, Sonnet, and Opus
+- **Text-to-Speech** — Have responses read aloud with multiple voice options (male, female, robot)
+- **Menu Bar Control** — Status, settings, and quick toggles from the menu bar
+- **Character Customization** — Resize characters (40pt–120pt) and pick your favorite
 
-- macOS 14.0 (Sonoma) 이상
-- Claude API 키 ([anthropic.com](https://console.anthropic.com)에서 발급)
+## Characters
 
-## 빌드 및 실행
+| Nova | Sprout |
+|------|--------|
+| Blue robot with tech-savvy personality | Green robot with cheerful personality |
+
+Each character has 20+ expressions including happy, sad, surprised, thinking, typing, error, and more.
+
+## Requirements
+
+- macOS 14.0 (Sonoma) or later
+- Anthropic API key (get one at [console.anthropic.com](https://console.anthropic.com))
+
+## Installation
+
+### App Store
+
+Docklings is available on the [Mac App Store](https://apps.apple.com/app/docklings/id6761625663) for $3.99.
+
+### Build from Source
 
 ```bash
-# 빌드
+# Clone
+git clone https://github.com/Jin-hoKim/my-agent-on-doc.git
+cd my-agent-on-doc
+
+# Build
 swift build
 
-# 실행
+# Run
 swift run MyAgentOnDock
 
-# 릴리즈 빌드
+# Release build
 swift build -c release
 ```
 
-## 설정
+## Setup
 
-앱 실행 후 메뉴바 아이콘(✦) → 설정에서:
+After launching, click the menu bar icon and open Settings:
 
-1. **API 키** 입력
-2. **캐릭터** 선택 (개발자/로봇/고양이/펭귄/우주인/닌자)
-3. **캐릭터 크기** 조절 (40pt ~ 120pt)
-4. **Claude 모델** 선택
-5. **음성** 선택 (TTS 지원)
+1. **Connection Mode** — Choose between Claude CLI or API mode
+2. **API Key** — Enter your Anthropic API key (API mode)
+3. **Character** — Pick your companion (Developer, Robot, Cat, Penguin, Astronaut, Ninja)
+4. **Character Size** — Adjust size (40pt–120pt)
+5. **Claude Model** — Select Haiku, Sonnet, or Opus
+6. **Voice** — Choose TTS voice for read-aloud
 
-## 기술 스택
+## Tech Stack
 
 - Swift 5.9+ / SwiftUI / AppKit (NSPanel, NSStatusItem, NSPopover)
-- Claude Messages API (SSE 스트리밍)
+- Claude Messages API (SSE streaming)
 - AVSpeechSynthesizer (TTS)
-- Lottie (애니메이션)
+- Lottie for iOS (character animations)
 
-## GitHub
+## Privacy
 
-https://github.com/Jin-hoKim/my-agent-on-doc
+Docklings respects your privacy. All data is stored locally on your device. Chat messages are sent to Anthropic's Claude API only to generate responses. See our [Privacy Policy](https://jin-hokim.github.io/my-agent-on-doc/privacy-policy.html).
+
+## License
+
+Copyright 2026 Jin-ho Kim. All rights reserved.
+
+---
+
+[한국어](README-ko.md)
