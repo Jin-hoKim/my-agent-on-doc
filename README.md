@@ -2,6 +2,12 @@
 
 A charming AI companion that lives right above your macOS Dock. Powered by Claude, it features animated robot characters that express emotions and react to conversations in real time.
 
+## Screenshots
+
+| Dock Character | Chat | Conversation | Settings |
+|:-:|:-:|:-:|:-:|
+| ![Dock](screenshots/screenshot_1_dock_character.png) | ![Chat](screenshots/screenshot_2_chat_empty.png) | ![Conversation](screenshots/screenshot_3_chat_conversation.png) | ![Settings](screenshots/screenshot_4_settings.png) |
+
 ## Features
 
 - **Dock Companion** — An animated AI character sits above your Dock, always ready to chat

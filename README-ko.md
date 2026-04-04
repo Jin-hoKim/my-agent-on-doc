@@ -2,6 +2,12 @@
 
 macOS Dock 위에 살아 숨 쉬는 AI 컴패니언. Claude로 구동되며, 대화에 따라 실시간으로 감정을 표현하는 애니메이션 로봇 캐릭터가 특징입니다.
 
+## 스크린샷
+
+| Dock 캐릭터 | 채팅 | 대화 | 설정 |
+|:-:|:-:|:-:|:-:|
+| ![Dock](screenshots/screenshot_1_dock_character.png) | ![Chat](screenshots/screenshot_2_chat_empty.png) | ![Conversation](screenshots/screenshot_3_chat_conversation.png) | ![Settings](screenshots/screenshot_4_settings.png) |
+
 ## 주요 기능
 
 - **Dock 위 컴패니언** — 애니메이션 AI 캐릭터가 Dock 위에 상시 대기하며 언제든 대화 가능
