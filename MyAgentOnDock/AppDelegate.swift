@@ -14,10 +14,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // 알림 옵저버
     private var observers: [NSObjectProtocol] = []
+    // 패널-프롬프트 창 간 오프셋 (패널 이동 시 추적용)
+    private var promptOffset: NSPoint = .zero
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         // Dock 아이콘 숨기기
         NSApp.setActivationPolicy(.accessory)
+
+        // 표준 Edit 메뉴 추가 (Cmd+C/V/X/A 지원)
+        setupMainMenu()
 
         // 메뉴바 아이콘 + 팝오버 설정
         setupStatusItem()
@@ -28,6 +33,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if AppSettings.shared.isPanelVisible {
             panel.orderFront(nil)
         }
+
+        // 시작 사운드 재생
+        SoundService.shared.playStartup()
 
         // 이벤트 옵저버 등록
         registerObservers()
@@ -53,6 +61,70 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 Task { @MainActor in handler() }
             }
         }
+
+        // 패널 이동 시 프롬프트 창 따라가기
+        observers.append(
+            NotificationCenter.default.addObserver(
+                forName: .dockPanelDidMove, object: nil, queue: .main
+            ) { [weak self] _ in
+                Task { @MainActor in
+                    guard let self,
+                          let window = self.promptWindow, window.isVisible,
+                          let panelFrame = self.dockPanel?.frame else { return }
+                    let newX = panelFrame.origin.x + self.promptOffset.x
+                    let newY = panelFrame.origin.y + self.promptOffset.y
+                    window.setFrameOrigin(NSPoint(x: newX, y: newY))
+                }
+            }
+        )
+
+        // 윈도우 닫힐 때 accessory 모드로 복귀
+        observers.append(
+            NotificationCenter.default.addObserver(
+                forName: NSWindow.willCloseNotification, object: nil, queue: .main
+            ) { [weak self] notification in
+                Task { @MainActor in
+                    guard let self else { return }
+                    let closingWindow = notification.object as? NSWindow
+                    if closingWindow == self.settingsWindow || closingWindow == self.promptWindow {
+                        // 다른 윈도우도 열려있으면 유지
+                        let settingsVisible = self.settingsWindow?.isVisible == true && closingWindow != self.settingsWindow
+                        let promptVisible = self.promptWindow?.isVisible == true && closingWindow != self.promptWindow
+                        if !settingsVisible && !promptVisible {
+                            NSApp.setActivationPolicy(.accessory)
+                        }
+                    }
+                }
+            }
+        )
+    }
+
+    // MARK: - 메인 메뉴 (Cmd+C/V/X/A 지원)
+
+    private func setupMainMenu() {
+        let mainMenu = NSMenu()
+
+        // App 메뉴
+        let appMenu = NSMenu()
+        appMenu.addItem(NSMenuItem(title: "Quit Dockling", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        let appMenuItem = NSMenuItem()
+        appMenuItem.submenu = appMenu
+        mainMenu.addItem(appMenuItem)
+
+        // Edit 메뉴
+        let editMenu = NSMenu(title: "Edit")
+        editMenu.addItem(NSMenuItem(title: "Undo", action: Selector(("undo:")), keyEquivalent: "z"))
+        editMenu.addItem(NSMenuItem(title: "Redo", action: Selector(("redo:")), keyEquivalent: "Z"))
+        editMenu.addItem(NSMenuItem.separator())
+        editMenu.addItem(NSMenuItem(title: "Cut", action: #selector(NSText.cut(_:)), keyEquivalent: "x"))
+        editMenu.addItem(NSMenuItem(title: "Copy", action: #selector(NSText.copy(_:)), keyEquivalent: "c"))
+        editMenu.addItem(NSMenuItem(title: "Paste", action: #selector(NSText.paste(_:)), keyEquivalent: "v"))
+        editMenu.addItem(NSMenuItem(title: "Select All", action: #selector(NSText.selectAll(_:)), keyEquivalent: "a"))
+        let editMenuItem = NSMenuItem()
+        editMenuItem.submenu = editMenu
+        mainMenu.addItem(editMenuItem)
+
+        NSApp.mainMenu = mainMenu
     }
 
     // MARK: - 메뉴바 설정
@@ -61,7 +133,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
         if let button = statusItem?.button {
-            button.image = NSImage(systemSymbolName: "sparkle", accessibilityDescription: "My Agent on Dock")
+            button.image = NSImage(systemSymbolName: "sunglasses.fill", accessibilityDescription: "Dockling")
             button.action = #selector(togglePopover(_:))
             button.target = self
             button.sendAction(on: [.leftMouseUp])
@@ -94,32 +166,78 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
 
-        let window = makeWindow(
-            size: NSRect(x: 0, y: 0, width: 480, height: 560),
-            title: "My Agent",
-            style: [.titled, .closable, .resizable, .miniaturizable]
+        let windowWidth: CGFloat = 360
+        let windowHeight: CGFloat = 480
+        let window = KeyablePanel(
+            contentRect: NSRect(x: 0, y: 0, width: windowWidth, height: windowHeight),
+            styleMask: [.borderless, .nonactivatingPanel],
+            backing: .buffered,
+            defer: false
         )
-        window.contentView = NSHostingView(rootView: PromptWindowView())
-        window.makeKeyAndOrderFront(nil)
+        window.isOpaque = false
+        window.backgroundColor = .clear
+        window.hasShadow = true
+        window.level = .floating
+        window.isMovableByWindowBackground = true
+        window.isReleasedWhenClosed = false
+
+        let hostingView = NSHostingView(rootView:
+            PromptWindowView(onClose: { [weak self] in
+                self?.promptWindow?.close()
+            })
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+        )
+        hostingView.layer?.cornerRadius = 16
+        hostingView.layer?.masksToBounds = true
+        window.contentView = hostingView
+
+        // 캐릭터 패널의 현재 위치 기준으로 바로 위에 배치
+        if let panelFrame = dockPanel?.frame {
+            let x = panelFrame.midX - windowWidth / 2
+            let y = panelFrame.maxY + 4
+            window.setFrameOrigin(NSPoint(x: x, y: y))
+
+            // 화면 위로 넘치면 보정
+            if let screen = NSScreen.main {
+                let screenTop = screen.visibleFrame.maxY
+                if y + windowHeight > screenTop {
+                    window.setFrameOrigin(NSPoint(x: x, y: screenTop - windowHeight))
+                }
+            }
+
+            // 현재 오프셋 기록 (패널 이동 추적용)
+            promptOffset = NSPoint(
+                x: window.frame.origin.x - panelFrame.origin.x,
+                y: window.frame.origin.y - panelFrame.origin.y
+            )
+        } else {
+            window.center()
+        }
+
+        NSApp.setActivationPolicy(.regular)
         NSApp.activate(ignoringOtherApps: true)
+        window.makeKeyAndOrderFront(nil)
+
         promptWindow = window
     }
 
     private func openSettingsWindow() {
         if let window = settingsWindow, window.isVisible {
-            window.makeKeyAndOrderFront(nil)
             NSApp.activate(ignoringOtherApps: true)
+            window.makeKeyAndOrderFront(nil)
             return
         }
 
         let window = makeWindow(
             size: NSRect(x: 0, y: 0, width: 400, height: 640),
-            title: "설정",
+            title: "Settings",
             style: [.titled, .closable]
         )
         window.contentView = NSHostingView(rootView: SettingsView())
-        window.makeKeyAndOrderFront(nil)
+        // accessory 앱에서 키보드 입력을 받으려면 활성화 먼저
+        NSApp.setActivationPolicy(.regular)
         NSApp.activate(ignoringOtherApps: true)
+        window.makeKeyAndOrderFront(nil)
         settingsWindow = window
     }
 
@@ -135,4 +253,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.isReleasedWhenClosed = false
         return window
     }
+}
+
+// borderless 패널이지만 키 입력을 받을 수 있는 패널
+class KeyablePanel: NSPanel {
+    override var canBecomeKey: Bool { true }
+    override var canBecomeMain: Bool { true }
 }
