@@ -1,8 +1,28 @@
-# 변경 이력
+# Change History
 
-## 2026-04-03 - Team 모드 코드 분리 (Solo 전용으로 정리)
+## 2026-04-04 — App Store Submission & Documentation
 
-### 삭제 파일 (Team 모드 전용 → my-agents-on-dock 프로젝트로 이동)
+### New Files
+- `MyAgentOnDock/Resources/AppIcon.icns` — Generated ICNS icon with all required sizes (16–512@2x) using iconutil
+- `docs/privacy-policy.html` — English privacy policy page (GitHub Pages)
+- `docs/privacy-policy-ko.html` — Korean privacy policy page
+- `README-ko.md` — Korean README
+
+### Modified Files
+- `MyAgentOnDock/Info.plist` — Added `CFBundleIconFile` (AppIcon) and `ITSAppUsesNonExemptEncryption` (NO)
+- `Dockling.xcodeproj/project.pbxproj` — Added AppIcon.icns file reference and resource build phase
+- `README.md` — Rewritten in English with full app description, App Store link, features, setup guide
+
+### Changes
+- Fixed App Store upload validation error: "Missing required icon in ICNS format containing 512pt x 512pt @2x"
+- Created privacy policy pages hosted on GitHub Pages for App Store compliance
+- Submitted to App Store review ($3.99, Utilities category, 4+ age rating)
+
+---
+
+## 2026-04-03 — Team Mode Code Separation (Solo-only Cleanup)
+
+### Deleted Files (Team mode → moved to my-agents-on-dock project)
 - `MyAgentOnDock/Models/AgentRole.swift`
 - `MyAgentOnDock/Models/TeamAgent.swift`
 - `MyAgentOnDock/Models/TeamConfiguration.swift`
@@ -14,154 +34,111 @@
 - `MyAgentOnDock/Views/SetupView.swift`
 - `MyAgentOnDock/Views/TeamDockView.swift`
 
-### 수정 파일
-- `MyAgentOnDock/AppDelegate.swift` — Team 모드 패널/서비스/옵저버 제거, Solo 전용으로 복원
-- `MyAgentOnDock/Views/MenuBarView.swift` — Team 상태 섹션/팀 설정 메뉴 제거, Solo 전용으로 복원
-- `README.md` — Team 모드 문서 제거
+### Modified Files
+- `MyAgentOnDock/AppDelegate.swift` — Removed Team mode panels/services/observers, restored to Solo-only
+- `MyAgentOnDock/Views/MenuBarView.swift` — Removed team status section and team settings menu
+- `README.md` — Removed Team mode documentation
 
-### 변경 사유
-- Solo 모드(my-agent-on-dock)와 Team 모드(my-agents-on-dock)를 별도 프로젝트로 분리
-- Team 모드는 https://github.com/Jin-hoKim/my-agents-on-doc 에서 독립 개발
+### Reason
+- Separated Solo mode (my-agent-on-dock) and Team mode (my-agents-on-dock) into independent projects
+- Team mode developed independently at https://github.com/Jin-hoKim/my-agents-on-doc
 
 ---
 
-## 2026-04-03 - 메뉴바 팝오버 안열림 버그 수정
+## 2026-04-03 — Menu Bar Popover Bug Fix
 
-### 수정 파일
+### Modified Files
 - `MyAgentOnDock/AppDelegate.swift`
-  - `togglePopover` 메서드: `NSApp.activate(ignoringOtherApps: true)` 호출 순서를 `pop.show()` 이전으로 변경 (이전: show→activate로 `.transient` behavior가 즉시 닫아버림)
-  - `NSPopover.behavior`: `.transient` → `.applicationDefined` (앱이 활성화되어도 팝오버 유지)
-  - 버튼 action: `#selector(togglePopover)` → `#selector(togglePopover(_:))` (sender 파라미터 일치)
-  - `button.sendAction(on: [.leftMouseUp])` 추가 (마우스업 이벤트로 정확히 트리거)
+  - `togglePopover`: Moved `NSApp.activate(ignoringOtherApps: true)` before `pop.show()` (previously show→activate caused `.transient` behavior to dismiss immediately)
+  - `NSPopover.behavior`: Changed from `.transient` to `.applicationDefined` (popover persists when app activates)
+  - Button action: `#selector(togglePopover)` → `#selector(togglePopover(_:))` (sender parameter match)
+  - Added `button.sendAction(on: [.leftMouseUp])` (trigger on mouse-up event)
 
-### 빌드 결과
-경고 0, 에러 0, Build complete
-
----
-
-## 2026-04-03 - 캐릭터 표정 다양화 (20가지 감정 상태)
-
-### 수정 파일
-- `MyAgentOnDock/Models/AgentState.swift` — 기존 5가지 상태에서 20가지 감정 상태로 확장
-  - 추가: voiceMode, excited, angry, winking, surprised, loading, pleased, sad, laughing, snoozing, neutral, outOfService, lowBattery, crazy, heartEyes, newMessage, unknown
-  - `autoRevertDelay` 프로퍼티 추가: 감정 표현 후 자동 idle 복귀 시간
-- `MyAgentOnDock/Models/CharacterType.swift` — 20가지 상태 × 6 캐릭터 이모지 매핑
-  - 기존 단순 프로퍼티 → `emoji(for state: AgentState) -> String` 메서드로 일원화
-  - 캐릭터별 특성 반영: 고양이는 😺😸😾🙀😻😹😿 등 고양이 이모지 활용
-  - 로봇은 ⚙️🖥️🔊💤🔴 등 기계적 이모지 활용
-  - 우주인은 🔭🛰️📡🚀🌌 등 우주 이모지 활용
-- `MyAgentOnDock/Views/DockCharacterView.swift` — 감정 상태별 비주얼 완전 리디자인
-  - 배경 그래디언트: 긍정(초록/노랑), 부정(빨강/파랑), 중립(회색) 등 감정별 색상
-  - 그림자 색상/크기 감정별 차별화
-  - 이모지 크기 스케일 감정별 차별화 (excited: 1.2x, outOfService: 0.85x)
-  - emotionBadge: voiceMode 음파 인디케이터, newMessage 빨간 점, snoozing 💤, lowBattery ⚠️
-  - 상태 텍스트 색상 감정별 차별화 (긍정: green, 부정: red, 특별: purple 등)
-- `MyAgentOnDock/Services/ClaudeAPIService.swift` — 상황별 자동 감정 전환 로직
-  - 메시지 전송 시: newMessage → thinking → streaming
-  - 응답 완료 시: 응답 길이/키워드 분석 → laughing/heartEyes/excited/pleased/winking 자동 결정
-  - 에러 종류별: 401→sad, 429→angry→lowBattery, 500→outOfService, 파싱→crazy, 기타→surprised
-  - 5분 idle 시 snoozing 자동 전환 (snoozingTask 타이머)
-  - TTS 재생 중 voiceMode 상태 유지
-
-### 빌드 결과
-경고 0, 에러 0, Build complete
+### Build Result
+0 warnings, 0 errors, Build complete
 
 ---
 
-## 2026-04-03 - Team 모드 구현 완성 + 메뉴바 팝오버 버그 수정 (최종)
+## 2026-04-03 — Character Expression Diversification (20 Emotion States)
 
-### 수정 파일 (이번 세션)
-- `MyAgentOnDock/AppDelegate.swift` — @MainActor 클래스, NSStatusItem+NSPopover 메뉴바, Team/Solo 패널 전환, 창 관리 일원화
-- `MyAgentOnDock/Views/MenuBarView.swift` — Team/Solo 모드 통합 뷰, 팀 에이전트 상태 목록, 팀 설정 버튼 추가
+### Modified Files
+- `MyAgentOnDock/Models/AgentState.swift` — Expanded from 5 states to 20 emotion states
+  - Added: voiceMode, excited, angry, winking, surprised, loading, pleased, sad, laughing, snoozing, neutral, outOfService, lowBattery, crazy, heartEyes, newMessage, unknown
+  - Added `autoRevertDelay` property: auto-revert to idle after emotion expression
+- `MyAgentOnDock/Models/CharacterType.swift` — 20 states × 6 characters emoji mapping
+  - Unified to `emoji(for state: AgentState) -> String` method
+  - Character-specific traits: cat uses cat emojis (😺😸😾🙀😻😹😿), robot uses mechanical (⚙️🖥️🔊💤🔴), astronaut uses space (🔭🛰️📡🚀🌌)
+- `MyAgentOnDock/Views/DockCharacterView.swift` — Complete visual redesign per emotion state
+  - Background gradients: positive (green/yellow), negative (red/blue), neutral (gray)
+  - Shadow color/size differentiated by emotion
+  - Emoji scale per emotion (excited: 1.2x, outOfService: 0.85x)
+  - emotionBadge: voiceMode wave indicator, newMessage red dot, snoozing 💤, lowBattery ⚠️
+- `MyAgentOnDock/Services/ClaudeAPIService.swift` — Context-aware automatic emotion transitions
+  - On send: newMessage → thinking → streaming
+  - On response: analyze length/keywords → laughing/heartEyes/excited/pleased/winking
+  - Per error type: 401→sad, 429→angry→lowBattery, 500→outOfService, parse→crazy, other→surprised
+  - 5-minute idle → snoozing auto-transition (snoozingTask timer)
 
-### 버그 수정 (최종)
-- MenuBarExtra(.window) + .accessory 정책 충돌로 메뉴창 미표시 문제 완전 해결
-  → NSStatusItem + NSPopover(.transient) 직접 구현 (AppDelegate에서 직접 관리)
-- AppDelegate 서비스 초기화를 applicationDidFinishLaunching으로 이동하여 @MainActor 충돌 방지
-
----
-
-## 2026-04-03 - Team 모드 구현 + 메뉴바 팝오버 버그 수정
-
-### 신규 파일 (Team 모드)
-- `MyAgentOnDock/Models/AgentRole.swift` — 역할별 이모지 매핑 (leader/frontend/backend 등)
-- `MyAgentOnDock/Models/TeamAgent.swift` — 팀 에이전트 모델 (id/model/name/emoji/isActive)
-- `MyAgentOnDock/Models/TeamConfiguration.swift` — agents.json 구조 + 파싱 함수
-- `MyAgentOnDock/Services/AgentsConfigService.swift` — agents.json 파싱/FSEvents 감시
-- `MyAgentOnDock/Services/BookmarkService.swift` — Security-Scoped Bookmark 관리
-- `MyAgentOnDock/Services/ProcessMonitorService.swift` — Claude CLI 프로세스 감지 (ps aux, 3초 폴링)
-- `MyAgentOnDock/Services/TeamPanelManager.swift` — 멀티 캐릭터 NSPanel (동적 너비)
-- `MyAgentOnDock/Views/AgentCharacterView.swift` — 개별 에이전트 캐릭터 뷰 (이모지+상태표시)
-- `MyAgentOnDock/Views/TeamDockView.swift` — HStack 기반 멀티 캐릭터 Dock 뷰
-- `MyAgentOnDock/Views/SetupView.swift` — 프로젝트 폴더 선택 + agents.json 미리보기 + 연결 UI
-
-### 수정 파일
-- `MyAgentOnDock/AppDelegate.swift` — @MainActor 추가, NSStatusItem+NSPopover 메뉴바 구현, Team 모드 서비스 체인 초기화
-- `MyAgentOnDock/main.swift` — MainActor.assumeIsolated로 @MainActor AppDelegate 초기화
-- `MyAgentOnDock/MyAgentOnDockApp.swift` — @main 제거, AppDelegate로 위임
-
-### 버그 수정
-- 메뉴바 아이콘 클릭 시 팝오버 미표시 문제: MenuBarExtra(.window) + .accessory 정책 충돌
-  → NSStatusItem + NSPopover(.transient) 직접 구현으로 교체
-
-## 2026-04-03 - Phase 5 기능 구현 완료 (SSE 스트리밍, 대화 저장, TTS)
-
-### 신규 파일
-- `MyAgentOnDock/Models/Conversation.swift` — 대화 세션 모델 (Codable, Identifiable)
-- `MyAgentOnDock/Services/ChatHistoryService.swift` — Application Support JSON 저장/로드, CRUD
-- `MyAgentOnDock/Services/TTSService.swift` — AVSpeechSynthesizer TTS 서비스
-
-### 수정 파일
-- `MyAgentOnDock/Models/AgentState.swift` — `.streaming` case 추가
-- `MyAgentOnDock/Models/ChatMessage.swift` — Codable 추가
-- `MyAgentOnDock/Models/ClaudeModel.swift` — 최신 모델 ID 반영 (claude-sonnet-4-6, claude-opus-4-6)
-- `MyAgentOnDock/Models/VoiceType.swift` — AVSpeechSynthesizer 피치/속도 매핑
-- `MyAgentOnDock/Services/AppSettings.swift` — ttsEnabled, useAnimation 설정 추가
-- `MyAgentOnDock/Services/ClaudeAPIService.swift` — SSE 스트리밍(`bytes(for:)`), 대화 저장 연동, TTS 연동
-- `MyAgentOnDock/Views/DockCharacterView.swift` — `.streaming` case 처리, 배경 그래디언트 수정
-- `MyAgentOnDock/Views/PromptWindowView.swift` — StreamingBubbleView (커서 애니메이션), ConversationListView, 대화 기록 UI
-- `MyAgentOnDock/Views/SettingsView.swift` — TTS 활성화 토글, 음성 선택, 테스트 버튼
-- `MyAgentOnDock/Views/MenuBarView.swift` — 최근 대화 메뉴 섹션 추가
-- `MyAgentOnDock/AppDelegate.swift` — 기존 구조 유지
-
-### Phase 5-5: App Store 배포 준비
-- `MyAgentOnDock/Info.plist` — NSAllowsArbitraryLoads=false, api.anthropic.com 도메인 예외 추가, displayName/minOS/copyright 추가
-- `MyAgentOnDock/MyAgentOnDock.entitlements` — 신규: App Sandbox (com.apple.security.app-sandbox=true), 네트워크 클라이언트 권한
-- `PRIVACY_POLICY.md` — 신규: 개인정보 처리방침 (로컬 저장, Anthropic API만 전송, 분석/추적 없음)
-
-### 변경 사유
-- Phase 5-1: SSE 스트리밍으로 토큰 단위 실시간 응답 표시 (UX 개선)
-- Phase 5-2: 대화 기록 JSON 저장 → 앱 재시작 시 복원, 최근 대화 5개 메뉴바 표시
-- Phase 5-3: TTS 활성화 토글, 음성 선택(남성/여성/로봇), 테스트 재생 버튼 SettingsView 추가
-- Phase 5-4: AVSpeechSynthesizer TTS — 남성/여성/로봇 음성 3종 지원
-- Phase 5-5: App Store 제출 요건 충족 (Sandbox, 네트워크 클라이언트, 개인정보방침)
-- 빌드 에러 수정: DockCharacterView `.streaming` case 누락 → switch 문 보완
-- TTSService @unchecked Sendable 추가 (AVSpeechSynthesizer Sendable 경고 제거)
+### Build Result
+0 warnings, 0 errors, Build complete
 
 ---
 
-## 2026-04-03 - 프로젝트 초기 생성
+## 2026-04-03 — Phase 5 Feature Completion (SSE Streaming, Chat History, TTS)
 
-### 신규 파일
-- `Package.swift` — SPM 프로젝트 정의 (Lottie 의존성)
-- `MyAgentOnDock/main.swift` — 앱 진입점
-- `MyAgentOnDock/MyAgentOnDockApp.swift` — SwiftUI 앱 구조체, 메뉴바 설정
-- `MyAgentOnDock/AppDelegate.swift` — 앱 생명주기, 패널/창 관리
-- `MyAgentOnDock/Info.plist` — 앱 설정 (LSUIElement, 네트워크)
-- `MyAgentOnDock/Models/CharacterType.swift` — 6종 캐릭터 타입 (개발자/로봇/고양이/펭귄/우주인/닌자)
-- `MyAgentOnDock/Models/AgentState.swift` — 에이전트 상태 (대기/생각/응답/에러)
-- `MyAgentOnDock/Models/ClaudeModel.swift` — Claude 모델 선택 (Haiku/Sonnet/Opus)
-- `MyAgentOnDock/Models/VoiceType.swift` — 음성 타입 (향후 TTS용)
-- `MyAgentOnDock/Models/ChatMessage.swift` — 채팅 메시지 모델
-- `MyAgentOnDock/Services/AppSettings.swift` — UserDefaults 기반 설정 관리
-- `MyAgentOnDock/Services/ClaudeAPIService.swift` — Claude API 호출 서비스
-- `MyAgentOnDock/Services/PanelManager.swift` — Dock 위 NSPanel 관리
-- `MyAgentOnDock/Views/DockCharacterView.swift` — Dock 위 캐릭터 뷰
-- `MyAgentOnDock/Views/PromptWindowView.swift` — 프롬프트 대화 창
-- `MyAgentOnDock/Views/SettingsView.swift` — 설정 창
-- `MyAgentOnDock/Views/MenuBarView.swift` — 메뉴바 드롭다운
+### New Files
+- `MyAgentOnDock/Models/Conversation.swift` — Conversation session model (Codable, Identifiable)
+- `MyAgentOnDock/Services/ChatHistoryService.swift` — Application Support JSON save/load, CRUD
+- `MyAgentOnDock/Services/TTSService.swift` — AVSpeechSynthesizer TTS service
 
-### 변경 사유
-- Solo 모드 macOS 앱 신규 프로젝트 생성
-- 사용자 Claude API 키로 1개 에이전트 운영
-- 캐릭터 클릭 → 프롬프트 대화 구조
+### Modified Files
+- `MyAgentOnDock/Models/AgentState.swift` — Added `.streaming` case
+- `MyAgentOnDock/Models/ChatMessage.swift` — Added Codable conformance
+- `MyAgentOnDock/Models/ClaudeModel.swift` — Updated to latest model IDs (claude-sonnet-4-6, claude-opus-4-6)
+- `MyAgentOnDock/Models/VoiceType.swift` — AVSpeechSynthesizer pitch/rate mapping
+- `MyAgentOnDock/Services/AppSettings.swift` — Added ttsEnabled, useAnimation settings
+- `MyAgentOnDock/Services/ClaudeAPIService.swift` — SSE streaming (`bytes(for:)`), chat history integration, TTS integration
+- `MyAgentOnDock/Views/DockCharacterView.swift` — `.streaming` case handling, background gradient update
+- `MyAgentOnDock/Views/PromptWindowView.swift` — StreamingBubbleView (cursor animation), ConversationListView, chat history UI
+- `MyAgentOnDock/Views/SettingsView.swift` — TTS toggle, voice selection, test button
+- `MyAgentOnDock/Views/MenuBarView.swift` — Recent conversations menu section
+
+### Phase 5-5: App Store Preparation
+- `MyAgentOnDock/Info.plist` — NSAllowsArbitraryLoads=false, api.anthropic.com domain exception, displayName/minOS/copyright
+- `MyAgentOnDock/MyAgentOnDock.entitlements` — App Sandbox (com.apple.security.app-sandbox=true), network client entitlement
+- `PRIVACY_POLICY.md` — Privacy policy (local storage, Anthropic API only, no analytics/tracking)
+
+### Reason
+- Phase 5-1: SSE streaming for token-by-token real-time response display (UX improvement)
+- Phase 5-2: Chat history JSON persistence → restore on app restart, 5 recent conversations in menu bar
+- Phase 5-3: TTS toggle, voice selection (male/female/robot), test play button in SettingsView
+- Phase 5-4: AVSpeechSynthesizer TTS — 3 voice types (male/female/robot)
+- Phase 5-5: App Store submission requirements (Sandbox, network client, privacy policy)
+
+---
+
+## 2026-04-03 — Initial Project Creation
+
+### New Files
+- `Package.swift` — SPM project definition (Lottie dependency)
+- `MyAgentOnDock/main.swift` — App entry point
+- `MyAgentOnDock/MyAgentOnDockApp.swift` — SwiftUI app structure, menu bar setup
+- `MyAgentOnDock/AppDelegate.swift` — App lifecycle, panel/window management
+- `MyAgentOnDock/Info.plist` — App configuration (LSUIElement, networking)
+- `MyAgentOnDock/Models/CharacterType.swift` — 6 character types (Developer/Robot/Cat/Penguin/Astronaut/Ninja)
+- `MyAgentOnDock/Models/AgentState.swift` — Agent states (idle/thinking/responding/error)
+- `MyAgentOnDock/Models/ClaudeModel.swift` — Claude model selection (Haiku/Sonnet/Opus)
+- `MyAgentOnDock/Models/VoiceType.swift` — Voice types (for TTS)
+- `MyAgentOnDock/Models/ChatMessage.swift` — Chat message model
+- `MyAgentOnDock/Services/AppSettings.swift` — UserDefaults-based settings management
+- `MyAgentOnDock/Services/ClaudeAPIService.swift` — Claude API service
+- `MyAgentOnDock/Services/PanelManager.swift` — Dock panel management (NSPanel)
+- `MyAgentOnDock/Views/DockCharacterView.swift` — Character view above Dock
+- `MyAgentOnDock/Views/PromptWindowView.swift` — Prompt chat window
+- `MyAgentOnDock/Views/SettingsView.swift` — Settings panel
+- `MyAgentOnDock/Views/MenuBarView.swift` — Menu bar dropdown
+
+### Reason
+- New Solo-mode macOS app project
+- Single agent powered by user's Claude API key
+- Character click → prompt chat interaction
