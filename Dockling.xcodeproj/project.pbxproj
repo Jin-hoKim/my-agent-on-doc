@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		051ADAAA2F80BC8A0045A69B /* kuzu420-robot-broken-loading-206293.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 051ADAA92F80BC8A0045A69B /* kuzu420-robot-broken-loading-206293.mp3 */; };
+		051ADAAB2F80BC8A0045A69B /* freesound_community-canto-robot-1-81459.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 051ADAA82F80BC8A0045A69B /* freesound_community-canto-robot-1-81459.mp3 */; };
 		052F6D6077EA4A7D02842BF6 /* blue_Sad bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 99570015CAF52011A8C0B5AB /* blue_Sad bot.json */; };
 		05417FD274DE96338DFA1585 /* VoiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1F28AF03BA704FE408002 /* VoiceType.swift */; };
 		071CE56AD5BB79521564B8E7 /* green_Winking Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 750793ADD73C409A737969FE /* green_Winking Face Bot.json */; };
@@ -50,6 +52,7 @@
 		99AB35FC4CC6932E0F31FACF /* ChatHistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6627EE96B35D3A89682A92E /* ChatHistoryService.swift */; };
 		9CC8E48B39F51F484895D8F5 /* blue_Surprised face.json in Resources */ = {isa = PBXBuildFile; fileRef = CFCA9B807562FFCA4A8A06FA /* blue_Surprised face.json */; };
 		A1CA34A86D85BCAD57A14701 /* blue_Loading face.json in Resources */ = {isa = PBXBuildFile; fileRef = D3A4A68A9D149E008392884F /* blue_Loading face.json */; };
+		AAAA000100010001AAAA0001 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = AAAA000100010001AAAA0002 /* AppIcon.icns */; };
 		AB31CE49BFBE952C5F9808B2 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = EACD705BD164F8331D7CF417 /* Lottie */; };
 		AD836341A07B33DCF5BB0223 /* PanelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15B88F51908CB20C12DE12 /* PanelManager.swift */; };
 		B6B7745964F83B1AFEB14FEB /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A903D1DF94C1C6AF2F95C0E2 /* LottieView.swift */; };
@@ -70,10 +73,11 @@
 		F3CEE5AF04108E4B6BD5B356 /* blue_New Message bot.json in Resources */ = {isa = PBXBuildFile; fileRef = A82F1A3FAD8C339B355CC390 /* blue_New Message bot.json */; };
 		F4F30C3CEE8AAB065F772EA1 /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15A78D3EDF716108F570CF /* SoundService.swift */; };
 		F7CBB6F7B52183A2E762B409 /* MyAgentOnDockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D098E294B5F75F544F4FF8 /* MyAgentOnDockApp.swift */; };
-		AAAA000100010001AAAA0001 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = AAAA000100010001AAAA0002 /* AppIcon.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		051ADAA82F80BC8A0045A69B /* freesound_community-canto-robot-1-81459.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "freesound_community-canto-robot-1-81459.mp3"; sourceTree = "<group>"; };
+		051ADAA92F80BC8A0045A69B /* kuzu420-robot-broken-loading-206293.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "kuzu420-robot-broken-loading-206293.mp3"; sourceTree = "<group>"; };
 		067928EA60824DAFE378E933 /* green_Sad Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Sad Face Bot.json"; sourceTree = "<group>"; };
 		078AE963D67B75AF54EA17F7 /* icon_128x128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_128x128.png; sourceTree = "<group>"; };
 		09E3A3293E2D2225DC55F297 /* universfield-error-011-352286.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "universfield-error-011-352286.mp3"; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 		A82F1A3FAD8C339B355CC390 /* blue_New Message bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_New Message bot.json"; sourceTree = "<group>"; };
 		A903D1DF94C1C6AF2F95C0E2 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		A90D2B64870D3E45B8353F30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AAAA000100010001AAAA0002 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 		C0215AA15C7B1F7C55C178F5 /* Dockling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dockling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1A45CF3920785C6FDE602D0 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		C455C9AD187CD7C50AB5C208 /* MyAgentOnDock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyAgentOnDock.entitlements; sourceTree = "<group>"; };
@@ -140,7 +145,6 @@
 		EEE0EFEC13DC307D234AA895 /* green_Error Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Error Bot.json"; sourceTree = "<group>"; };
 		F4D88001AB3E7885B047B8C7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		FB25467EDA6C15A7E2BEC16F /* blue_Winking face.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_Winking face.json"; sourceTree = "<group>"; };
-		AAAA000100010001AAAA0002 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +173,8 @@
 		54805FE25D5A298ABC83A445 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				051ADAA82F80BC8A0045A69B /* freesound_community-canto-robot-1-81459.mp3 */,
+				051ADAA92F80BC8A0045A69B /* kuzu420-robot-broken-loading-206293.mp3 */,
 				4BEEE66971DCDFC41542350A /* freesound_community-3beeps-108353.mp3 */,
 				4365A9ADDE464D8107309D2F /* mightuser-sound-of-error-beep-hd-267280.mp3 */,
 				09E3A3293E2D2225DC55F297 /* universfield-error-011-352286.mp3 */,
@@ -365,6 +371,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				051ADAAA2F80BC8A0045A69B /* kuzu420-robot-broken-loading-206293.mp3 in Resources */,
+				051ADAAB2F80BC8A0045A69B /* freesound_community-canto-robot-1-81459.mp3 in Resources */,
 				2283B0770317C96E66F3F62F /* Contents.json in Resources */,
 				2000FC422D489E172F569833 /* blue_Angry bot.json in Resources */,
 				2C2872DF79D1B2C32CD4C898 /* blue_Heart bot.json in Resources */,
@@ -452,7 +460,7 @@
 				CODE_SIGN_ENTITLEMENTS = MyAgentOnDock/MyAgentOnDock.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 5376EHCG2P;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
@@ -485,7 +493,7 @@
 				CODE_SIGN_ENTITLEMENTS = MyAgentOnDock/MyAgentOnDock.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 5376EHCG2P;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
