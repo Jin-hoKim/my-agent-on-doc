@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docklings - User Guide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #1d1d1f;
+            background: #fff;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .lang-switch {
+            text-align: right;
+            margin-bottom: 32px;
+        }
+        .lang-switch a {
+            color: #0071e3;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 12px;
+            border: 1px solid #0071e3;
+            border-radius: 6px;
+        }
+        .lang-switch a:hover {
+            background: #0071e3;
+            color: #fff;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: #86868b;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 48px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #d2d2d7;
+        }
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 28px;
+            margin-bottom: 10px;
+        }
+        p, li {
+            font-size: 16px;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+        ul, ol {
+            padding-left: 24px;
+            margin-bottom: 16px;
+        }
+        ol li {
+            margin-bottom: 8px;
+        }
+        a { color: #0071e3; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .tip {
+            background: #f5f5f7;
+            border-left: 4px solid #0071e3;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 15px;
+        }
+        .tip strong {
+            color: #0071e3;
+        }
+        .warning {
+            background: #fff8f0;
+            border-left: 4px solid #ff9500;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 15px;
+        }
+        .warning strong {
+            color: #ff9500;
+        }
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: #0071e3;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 1px solid #d2d2d7;
+            font-size: 15px;
+        }
+        th {
+            font-weight: 600;
+            background: #f5f5f7;
+        }
+        code {
+            background: #f5f5f7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: 'SF Mono', Menlo, monospace;
+        }
+        .footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #d2d2d7;
+            font-size: 13px;
+            color: #86868b;
+        }
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+        }
+        .nav-links a {
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="lang-switch">
+            <a href="guide-ko.html">한국어</a>
+        </div>
+
+        <h1>Docklings User Guide</h1>
+        <p class="subtitle">Everything you need to know to get started with your AI dock companion.</p>
+
+        <h2>Getting Started</h2>
+
+        <h3><span class="step-number">1</span> Launch the App</h3>
+        <p>After installing Docklings from the Mac App Store, launch it from your Applications folder. The app runs as a menu bar application — you'll see a small icon appear in your menu bar.</p>
+
+        <div class="tip">
+            <strong>Tip:</strong> Docklings runs in the background and doesn't appear in the Dock app switcher. Look for the icon in your menu bar (top-right of your screen).
+        </div>
+
+        <h3><span class="step-number">2</span> Set Up Your Connection</h3>
+        <p>Click the menu bar icon and open <strong>Settings</strong>. You have two ways to connect to Claude:</p>
+
+        <table>
+            <tr>
+                <th>Mode</th>
+                <th>Description</th>
+                <th>Requirements</th>
+            </tr>
+            <tr>
+                <td><strong>Claude CLI</strong></td>
+                <td>Uses your local Claude Code installation</td>
+                <td><a href="https://claude.ai/claude-code">Claude Code CLI</a> installed</td>
+            </tr>
+            <tr>
+                <td><strong>Claude API</strong></td>
+                <td>Connects directly to Anthropic's API</td>
+                <td>API key from <a href="https://console.anthropic.com">console.anthropic.com</a></td>
+            </tr>
+        </table>
+
+        <p>For <strong>API mode</strong>, enter your Anthropic API key in the settings. The key is stored securely on your device and never sent anywhere except Anthropic's servers.</p>
+
+        <h3><span class="step-number">3</span> Meet Your Companion</h3>
+        <p>Once connected, an animated character will appear above your Dock. This is your AI companion, ready to chat anytime!</p>
+
+        <h2>Chatting with Your Companion</h2>
+
+        <h3>Starting a Conversation</h3>
+        <ol>
+            <li><strong>Click the character</strong> above your Dock to open the chat window</li>
+            <li><strong>Type your message</strong> in the text field at the bottom</li>
+            <li><strong>Press Enter</strong> or click Send to submit</li>
+            <li>Watch your companion react with expressions as Claude responds in real-time</li>
+        </ol>
+
+        <h3>Chat Features</h3>
+        <ul>
+            <li><strong>Real-time streaming:</strong> Responses appear token-by-token as Claude generates them</li>
+            <li><strong>Conversation memory:</strong> Claude remembers context within each conversation</li>
+            <li><strong>New conversation:</strong> Click the new chat button to start fresh</li>
+            <li><strong>Chat history:</strong> Access previous conversations from the menu bar</li>
+        </ul>
+
+        <h2>Character Expressions</h2>
+
+        <p>Your companion has over 20 animated expressions that react to the conversation:</p>
+
+        <table>
+            <tr>
+                <th>Expression</th>
+                <th>When it appears</th>
+            </tr>
+            <tr><td>Idle</td><td>Waiting for your message</td></tr>
+            <tr><td>Thinking</td><td>Processing your message</td></tr>
+            <tr><td>Typing</td><td>Generating a response</td></tr>
+            <tr><td>Excited</td><td>Long, enthusiastic response</td></tr>
+            <tr><td>Pleased</td><td>Normal, friendly response</td></tr>
+            <tr><td>Laughing</td><td>Response contains humor keywords</td></tr>
+            <tr><td>Heart Eyes</td><td>Response contains affection keywords</td></tr>
+            <tr><td>Surprised</td><td>Unexpected error occurs</td></tr>
+            <tr><td>Sad</td><td>Authentication error (invalid API key)</td></tr>
+            <tr><td>Angry</td><td>Rate limit exceeded</td></tr>
+            <tr><td>Snoozing</td><td>Idle for more than 5 minutes</td></tr>
+            <tr><td>Voice Mode</td><td>Text-to-speech is playing</td></tr>
+        </table>
+
+        <h2>Characters</h2>
+
+        <p>Choose from two character families, each with their own personality:</p>
+
+        <table>
+            <tr>
+                <th>Character</th>
+                <th>Color</th>
+                <th>Personality</th>
+            </tr>
+            <tr>
+                <td><strong>Nova</strong></td>
+                <td>Blue</td>
+                <td>Tech-savvy, analytical, helpful</td>
+            </tr>
+            <tr>
+                <td><strong>Sprout</strong></td>
+                <td>Green</td>
+                <td>Cheerful, energetic, friendly</td>
+            </tr>
+        </table>
+
+        <h2>Settings</h2>
+
+        <h3>Connection</h3>
+        <ul>
+            <li><strong>Connection Mode:</strong> Switch between Claude CLI and API mode</li>
+            <li><strong>API Key:</strong> Enter your Anthropic API key (API mode only)</li>
+            <li><strong>Claude Model:</strong> Choose between Haiku (fast), Sonnet (balanced), or Opus (most capable)</li>
+        </ul>
+
+        <h3>Appearance</h3>
+        <ul>
+            <li><strong>Character:</strong> Select your preferred companion</li>
+            <li><strong>Character Size:</strong> Adjust from 40pt (small) to 120pt (large) using the slider</li>
+        </ul>
+
+        <h3>Voice</h3>
+        <ul>
+            <li><strong>Text-to-Speech:</strong> Toggle on/off to have responses read aloud</li>
+            <li><strong>Voice Type:</strong> Choose from Male, Female, or Robot voice</li>
+            <li><strong>Test:</strong> Preview the selected voice with a sample phrase</li>
+        </ul>
+
+        <h2>Menu Bar</h2>
+
+        <p>Click the menu bar icon to access:</p>
+        <ul>
+            <li><strong>Connection status:</strong> Shows whether Claude is connected</li>
+            <li><strong>Recent conversations:</strong> Quick access to your last 5 chats</li>
+            <li><strong>Settings:</strong> Open the settings panel</li>
+            <li><strong>Quit:</strong> Exit Docklings</li>
+        </ul>
+
+        <h2>Claude Models</h2>
+
+        <table>
+            <tr>
+                <th>Model</th>
+                <th>Speed</th>
+                <th>Capability</th>
+                <th>Best For</th>
+            </tr>
+            <tr>
+                <td><strong>Haiku 4.5</strong></td>
+                <td>Fastest</td>
+                <td>Good</td>
+                <td>Quick questions, simple tasks</td>
+            </tr>
+            <tr>
+                <td><strong>Sonnet 4.6</strong></td>
+                <td>Fast</td>
+                <td>Great</td>
+                <td>Most conversations, balanced</td>
+            </tr>
+            <tr>
+                <td><strong>Opus 4.6</strong></td>
+                <td>Moderate</td>
+                <td>Best</td>
+                <td>Complex reasoning, detailed analysis</td>
+            </tr>
+        </table>
+
+        <div class="tip">
+            <strong>Tip:</strong> Start with Sonnet for everyday use. Switch to Haiku for quick answers or Opus when you need the most thoughtful responses.
+        </div>
+
+        <h2>Troubleshooting</h2>
+
+        <h3>Character not appearing above the Dock</h3>
+        <ul>
+            <li>Make sure Docklings is running (check for the menu bar icon)</li>
+            <li>Try quitting and relaunching the app</li>
+            <li>Check that your connection is set up in Settings</li>
+        </ul>
+
+        <h3>API connection errors</h3>
+        <ul>
+            <li>Verify your API key is correct in Settings</li>
+            <li>Check your internet connection</li>
+            <li>Ensure you have API credits at <a href="https://console.anthropic.com">console.anthropic.com</a></li>
+        </ul>
+
+        <h3>"Rate limit exceeded" error</h3>
+        <ul>
+            <li>Wait a moment before sending another message</li>
+            <li>Consider switching to a different model</li>
+            <li>Check your API usage limits at Anthropic's console</li>
+        </ul>
+
+        <h2>Privacy & Data</h2>
+        <ul>
+            <li>All data is stored locally on your Mac</li>
+            <li>Chat messages are only sent to Anthropic's Claude API</li>
+            <li>No analytics, tracking, or third-party data sharing</li>
+            <li>Read our full <a href="privacy-policy.html">Privacy Policy</a></li>
+        </ul>
+
+        <h2>Support</h2>
+        <p>Need help? Have feedback?</p>
+        <ul>
+            <li>Email: <a href="mailto:wltn222@gmail.com">wltn222@gmail.com</a></li>
+            <li>GitHub: <a href="https://github.com/Jin-hoKim/my-agent-on-doc/issues">Report an issue</a></li>
+        </ul>
+
+        <div class="footer">
+            &copy; 2026 Jin-ho Kim. All rights reserved.
+            <div class="nav-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="guide-ko.html">한국어 가이드</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
