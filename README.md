@@ -2,10 +2,6 @@
 
 A charming AI companion that lives right above your macOS Dock. Powered by Claude, it features animated robot characters that express emotions and react to conversations in real time.
 
-<p align="center">
-  <img src="https://github.com/Jin-hoKim/my-agent-on-doc/raw/main/docs/screenshots/docklings-hero.png" alt="Docklings" width="600">
-</p>
-
 ## Features
 
 - **Dock Companion** — An animated AI character sits above your Dock, always ready to chat

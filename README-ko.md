@@ -2,10 +2,6 @@
 
 macOS Dock 위에 살아 숨 쉬는 AI 컴패니언. Claude로 구동되며, 대화에 따라 실시간으로 감정을 표현하는 애니메이션 로봇 캐릭터가 특징입니다.
 
-<p align="center">
-  <img src="https://github.com/Jin-hoKim/my-agent-on-doc/raw/main/docs/screenshots/docklings-hero.png" alt="Docklings" width="600">
-</p>
-
 ## 주요 기능
 
 - **Dock 위 컴패니언** — 애니메이션 AI 캐릭터가 Dock 위에 상시 대기하며 언제든 대화 가능
