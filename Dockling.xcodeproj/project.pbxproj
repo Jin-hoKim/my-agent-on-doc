@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		051ADAAA2F80BC8A0045A69B /* kuzu420-robot-broken-loading-206293.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 051ADAA92F80BC8A0045A69B /* kuzu420-robot-broken-loading-206293.mp3 */; };
-		051ADAAB2F80BC8A0045A69B /* freesound_community-canto-robot-1-81459.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 051ADAA82F80BC8A0045A69B /* freesound_community-canto-robot-1-81459.mp3 */; };
 		052F6D6077EA4A7D02842BF6 /* blue_Sad bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 99570015CAF52011A8C0B5AB /* blue_Sad bot.json */; };
 		05417FD274DE96338DFA1585 /* VoiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1F28AF03BA704FE408002 /* VoiceType.swift */; };
 		071CE56AD5BB79521564B8E7 /* green_Winking Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 750793ADD73C409A737969FE /* green_Winking Face Bot.json */; };
@@ -27,6 +25,7 @@
 		37F82EAD8434CB75326EC90A /* blue_Typing face.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C48AC62F8F9FD3F30E424EC /* blue_Typing face.json */; };
 		3BB60431C9DEDF97FA965318 /* blue_Unknown face.json in Resources */ = {isa = PBXBuildFile; fileRef = 800AA692811FA163CBB06EA0 /* blue_Unknown face.json */; };
 		40F14EA055A2F6E2EAB209A4 /* green_Pleased Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = C9C144CD80442A1F88CFA654 /* green_Pleased Face Bot.json */; };
+		45342FFF5059415994D7959C /* freesound_community-canto-robot-1-81459.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC1481B1CC1C1C209B4FF48C /* freesound_community-canto-robot-1-81459.mp3 */; };
 		4D28CE501143E84981648B7A /* DockCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB0BDBD912D029098409EC8 /* DockCharacterView.swift */; };
 		517D09EB065D85D43291E82B /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2337E265B1A00A2E1F6AD6 /* MenuBarView.swift */; };
 		58C1E81C86B97325D4E1C20C /* blue_Pleased face.json in Resources */ = {isa = PBXBuildFile; fileRef = 601A1773F0517E895ECB5B2B /* blue_Pleased face.json */; };
@@ -35,6 +34,7 @@
 		60858AC04C4079A6426989EF /* green_Snoozing Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = E0B7FFA43C27BF511568A3BD /* green_Snoozing Bot.json */; };
 		61D71EED06596AB47D24EBF8 /* universfield-new-notification-028-383966.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 552F9823297FEEBA8870A477 /* universfield-new-notification-028-383966.mp3 */; };
 		66BD6BE9704C3AA6DF1E92EF /* universfield-new-notification-027-383749.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D1F452199EC920F8A38C3A0 /* universfield-new-notification-027-383749.mp3 */; };
+		6823A2E74CE5AEEE635E1123 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4B65C4A10957DADFDAFE923D /* AppIcon.icns */; };
 		6A71598C65AFA4462EA13895 /* blue_Out of service face.json in Resources */ = {isa = PBXBuildFile; fileRef = ED8822B5D6690B9789E6638B /* blue_Out of service face.json */; };
 		6EC271E649037A0B780209E0 /* green_Error Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = EEE0EFEC13DC307D234AA895 /* green_Error Bot.json */; };
 		7276626BECC6D5F6060CF5F2 /* mightuser-sound-of-error-beep-hd-267280.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4365A9ADDE464D8107309D2F /* mightuser-sound-of-error-beep-hd-267280.mp3 */; };
@@ -52,15 +52,16 @@
 		99AB35FC4CC6932E0F31FACF /* ChatHistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6627EE96B35D3A89682A92E /* ChatHistoryService.swift */; };
 		9CC8E48B39F51F484895D8F5 /* blue_Surprised face.json in Resources */ = {isa = PBXBuildFile; fileRef = CFCA9B807562FFCA4A8A06FA /* blue_Surprised face.json */; };
 		A1CA34A86D85BCAD57A14701 /* blue_Loading face.json in Resources */ = {isa = PBXBuildFile; fileRef = D3A4A68A9D149E008392884F /* blue_Loading face.json */; };
-		AAAA000100010001AAAA0001 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = AAAA000100010001AAAA0002 /* AppIcon.icns */; };
 		AB31CE49BFBE952C5F9808B2 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = EACD705BD164F8331D7CF417 /* Lottie */; };
 		AD836341A07B33DCF5BB0223 /* PanelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15B88F51908CB20C12DE12 /* PanelManager.swift */; };
+		AF42C03930C7323DD1577512 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F921D44E8F93E5014DECD2 /* KeychainStore.swift */; };
 		B6B7745964F83B1AFEB14FEB /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A903D1DF94C1C6AF2F95C0E2 /* LottieView.swift */; };
 		B9FC3B9D98506F50F5649D1F /* green_Surprised Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD61E614BA0286EE0D6D1C /* green_Surprised Face Bot.json */; };
 		BE36E6B3FC09675938879F1A /* green_Crazy Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F067FBAB0AA26FE297AB122 /* green_Crazy Face Bot.json */; };
 		CF5F929BEB42F56E05D8889C /* green_Normal Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = D37A30C29DE5D693CE20F527 /* green_Normal Face Bot.json */; };
 		D01F088E331CCAA20188802A /* icon_16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF0F2769CE0EE597F6FB9B /* icon_16x16.png */; };
 		D6E87A425B10CA8108550C97 /* blue_Winking face.json in Resources */ = {isa = PBXBuildFile; fileRef = FB25467EDA6C15A7E2BEC16F /* blue_Winking face.json */; };
+		DBB95DD28988309A976F590F /* kuzu420-robot-broken-loading-206293.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C3E37943A3AA1FB831B42A11 /* kuzu420-robot-broken-loading-206293.mp3 */; };
 		DDF911D5EA9B32B19B23A309 /* icon_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E7F4FDD4D2533ACF089E32F /* icon_256x256.png */; };
 		E55FEB88824D5AA8B050DF98 /* icon_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B6839A34D0524023F6D5690 /* icon_32x32.png */; };
 		E5D44B06A31856469EB80EE6 /* green_Unknown Face Bot.json in Resources */ = {isa = PBXBuildFile; fileRef = 75ECF3CD01D2C9326C413C36 /* green_Unknown Face Bot.json */; };
@@ -76,8 +77,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		051ADAA82F80BC8A0045A69B /* freesound_community-canto-robot-1-81459.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "freesound_community-canto-robot-1-81459.mp3"; sourceTree = "<group>"; };
-		051ADAA92F80BC8A0045A69B /* kuzu420-robot-broken-loading-206293.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "kuzu420-robot-broken-loading-206293.mp3"; sourceTree = "<group>"; };
 		067928EA60824DAFE378E933 /* green_Sad Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Sad Face Bot.json"; sourceTree = "<group>"; };
 		078AE963D67B75AF54EA17F7 /* icon_128x128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_128x128.png; sourceTree = "<group>"; };
 		09E3A3293E2D2225DC55F297 /* universfield-error-011-352286.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "universfield-error-011-352286.mp3"; sourceTree = "<group>"; };
@@ -93,6 +92,7 @@
 		3E7F4FDD4D2533ACF089E32F /* icon_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_256x256.png; sourceTree = "<group>"; };
 		40036272299FA3C85AD4B3D0 /* green_Voice Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Voice Face Bot.json"; sourceTree = "<group>"; };
 		4365A9ADDE464D8107309D2F /* mightuser-sound-of-error-beep-hd-267280.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "mightuser-sound-of-error-beep-hd-267280.mp3"; sourceTree = "<group>"; };
+		4B65C4A10957DADFDAFE923D /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 		4BEEE66971DCDFC41542350A /* freesound_community-3beeps-108353.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "freesound_community-3beeps-108353.mp3"; sourceTree = "<group>"; };
 		552F9823297FEEBA8870A477 /* universfield-new-notification-028-383966.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "universfield-new-notification-028-383966.mp3"; sourceTree = "<group>"; };
 		56DC6DAA11A972D2AD058AA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,21 +126,23 @@
 		A82F1A3FAD8C339B355CC390 /* blue_New Message bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_New Message bot.json"; sourceTree = "<group>"; };
 		A903D1DF94C1C6AF2F95C0E2 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		A90D2B64870D3E45B8353F30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		AAAA000100010001AAAA0002 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 		C0215AA15C7B1F7C55C178F5 /* Dockling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dockling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1A45CF3920785C6FDE602D0 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		C3E37943A3AA1FB831B42A11 /* kuzu420-robot-broken-loading-206293.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "kuzu420-robot-broken-loading-206293.mp3"; sourceTree = "<group>"; };
 		C455C9AD187CD7C50AB5C208 /* MyAgentOnDock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyAgentOnDock.entitlements; sourceTree = "<group>"; };
 		C66699E8377A272AD95FF018 /* green_Loading Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Loading Face Bot.json"; sourceTree = "<group>"; };
 		C9C144CD80442A1F88CFA654 /* green_Pleased Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Pleased Face Bot.json"; sourceTree = "<group>"; };
 		CEA1F28AF03BA704FE408002 /* VoiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceType.swift; sourceTree = "<group>"; };
 		CFCA9B807562FFCA4A8A06FA /* blue_Surprised face.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_Surprised face.json"; sourceTree = "<group>"; };
-		D24C222DCA1D7D1BCEABF07F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		D24C222DCA1D7D1BCEABF07F /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		D37A30C29DE5D693CE20F527 /* green_Normal Face Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Normal Face Bot.json"; sourceTree = "<group>"; };
 		D3A4A68A9D149E008392884F /* blue_Loading face.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_Loading face.json"; sourceTree = "<group>"; };
 		DBB0BDBD912D029098409EC8 /* DockCharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockCharacterView.swift; sourceTree = "<group>"; };
 		DCD3683F78CD17A1C5474DAA /* ClaudeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeModel.swift; sourceTree = "<group>"; };
 		E0B7FFA43C27BF511568A3BD /* green_Snoozing Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Snoozing Bot.json"; sourceTree = "<group>"; };
 		E563835D6AEAC6CF06CE43A1 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		E9F921D44E8F93E5014DECD2 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+		EC1481B1CC1C1C209B4FF48C /* freesound_community-canto-robot-1-81459.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "freesound_community-canto-robot-1-81459.mp3"; sourceTree = "<group>"; };
 		ED8822B5D6690B9789E6638B /* blue_Out of service face.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue_Out of service face.json"; sourceTree = "<group>"; };
 		EEE0EFEC13DC307D234AA895 /* green_Error Bot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_Error Bot.json"; sourceTree = "<group>"; };
 		F4D88001AB3E7885B047B8C7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -162,9 +164,9 @@
 		46C0EA36D21AD2B89B2699D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4B65C4A10957DADFDAFE923D /* AppIcon.icns */,
 				F416B71BF8780A22B30B7DEC /* Animations */,
 				6466D98F31F4388272674DB5 /* AppIcon.appiconset */,
-				AAAA000100010001AAAA0002 /* AppIcon.icns */,
 				54805FE25D5A298ABC83A445 /* Sounds */,
 			);
 			path = Resources;
@@ -173,9 +175,9 @@
 		54805FE25D5A298ABC83A445 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				051ADAA82F80BC8A0045A69B /* freesound_community-canto-robot-1-81459.mp3 */,
-				051ADAA92F80BC8A0045A69B /* kuzu420-robot-broken-loading-206293.mp3 */,
 				4BEEE66971DCDFC41542350A /* freesound_community-3beeps-108353.mp3 */,
+				EC1481B1CC1C1C209B4FF48C /* freesound_community-canto-robot-1-81459.mp3 */,
+				C3E37943A3AA1FB831B42A11 /* kuzu420-robot-broken-loading-206293.mp3 */,
 				4365A9ADDE464D8107309D2F /* mightuser-sound-of-error-beep-hd-267280.mp3 */,
 				09E3A3293E2D2225DC55F297 /* universfield-error-011-352286.mp3 */,
 				3D1F452199EC920F8A38C3A0 /* universfield-new-notification-027-383749.mp3 */,
@@ -230,6 +232,7 @@
 				E563835D6AEAC6CF06CE43A1 /* AppSettings.swift */,
 				A6627EE96B35D3A89682A92E /* ChatHistoryService.swift */,
 				61FE44A6CFD24FCA51FDDBA7 /* ClaudeAPIService.swift */,
+				E9F921D44E8F93E5014DECD2 /* KeychainStore.swift */,
 				5E15B88F51908CB20C12DE12 /* PanelManager.swift */,
 				9F15A78D3EDF716108F570CF /* SoundService.swift */,
 				87B97C94D2CFFAE76198ADBD /* TTSService.swift */,
@@ -371,8 +374,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				051ADAAA2F80BC8A0045A69B /* kuzu420-robot-broken-loading-206293.mp3 in Resources */,
-				051ADAAB2F80BC8A0045A69B /* freesound_community-canto-robot-1-81459.mp3 in Resources */,
+				6823A2E74CE5AEEE635E1123 /* AppIcon.icns in Resources */,
 				2283B0770317C96E66F3F62F /* Contents.json in Resources */,
 				2000FC422D489E172F569833 /* blue_Angry bot.json in Resources */,
 				2C2872DF79D1B2C32CD4C898 /* blue_Heart bot.json in Resources */,
@@ -388,6 +390,7 @@
 				EE1D2F754354BF2D7F20DF33 /* blue_Voice face.json in Resources */,
 				D6E87A425B10CA8108550C97 /* blue_Winking face.json in Resources */,
 				EE72AE2FBD48DAB74B3B2FFC /* freesound_community-3beeps-108353.mp3 in Resources */,
+				45342FFF5059415994D7959C /* freesound_community-canto-robot-1-81459.mp3 in Resources */,
 				BE36E6B3FC09675938879F1A /* green_Crazy Face Bot.json in Resources */,
 				6EC271E649037A0B780209E0 /* green_Error Bot.json in Resources */,
 				883B23C1FBF8596B380E3567 /* green_Laughing Bot.json in Resources */,
@@ -411,11 +414,11 @@
 				E55FEB88824D5AA8B050DF98 /* icon_32x32.png in Resources */,
 				7BBD1C320CB674F396A7DC52 /* icon_512x512.png in Resources */,
 				08E542B489DF457C992566A2 /* icon_64x64.png in Resources */,
+				DBB95DD28988309A976F590F /* kuzu420-robot-broken-loading-206293.mp3 in Resources */,
 				7276626BECC6D5F6060CF5F2 /* mightuser-sound-of-error-beep-hd-267280.mp3 in Resources */,
 				2B5E63E4C5A286E4AD316966 /* universfield-error-011-352286.mp3 in Resources */,
 				66BD6BE9704C3AA6DF1E92EF /* universfield-new-notification-027-383749.mp3 in Resources */,
 				61D71EED06596AB47D24EBF8 /* universfield-new-notification-028-383966.mp3 in Resources */,
-				AAAA000100010001AAAA0001 /* AppIcon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +439,7 @@
 				E82B03177E2F7D1CFEA5F6A2 /* ClaudeModel.swift in Sources */,
 				18F6AEFC54EEA325E1BDE303 /* Conversation.swift in Sources */,
 				4D28CE501143E84981648B7A /* DockCharacterView.swift in Sources */,
+				AF42C03930C7323DD1577512 /* KeychainStore.swift in Sources */,
 				B6B7745964F83B1AFEB14FEB /* LottieView.swift in Sources */,
 				517D09EB065D85D43291E82B /* MenuBarView.swift in Sources */,
 				F7CBB6F7B52183A2E762B409 /* MyAgentOnDockApp.swift in Sources */,
@@ -456,23 +460,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = MyAgentOnDock/MyAgentOnDock.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5376EHCG2P;
 				ENABLE_APP_SANDBOX = YES;
-				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
-				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
-				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
-				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
-				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
-				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
-				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
-				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
-				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
-				ENABLE_RESOURCE_ACCESS_USB = NO;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = MyAgentOnDock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
@@ -489,23 +482,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = MyAgentOnDock/MyAgentOnDock.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5376EHCG2P;
 				ENABLE_APP_SANDBOX = YES;
-				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
-				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
-				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
-				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
-				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
-				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
-				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
-				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
-				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
-				ENABLE_RESOURCE_ACCESS_USB = NO;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = MyAgentOnDock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
